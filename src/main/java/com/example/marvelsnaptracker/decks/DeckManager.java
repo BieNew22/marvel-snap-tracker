@@ -55,6 +55,14 @@ public class DeckManager {
     }
 
     /**
+     * 사용자의 모든 덱 정보 리턴
+     * @return iterator<Deck>
+     */
+    public Iterator<Deck> getAllDeckInfo() {
+        return deckList.iterator();
+    }
+
+    /**
      * 현재 사용자의 덱 리스트를 콘솔에 출력하는 함수.
      */
     public void showDeckList() {

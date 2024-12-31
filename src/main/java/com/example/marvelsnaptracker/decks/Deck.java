@@ -1,21 +1,24 @@
 package com.example.marvelsnaptracker.decks;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 
 /**
  * 사용자 덱 객체
  */
+@Getter
 public class Deck {
     // 덱 고유 ID
-    String id;
+    private final String id;
 
     // 덱 이름
-    String name;
+    private final String name;
 
     // 덱 카드 리스트 (카드 이름)
-    ArrayList<String> cardList;
+    private final ArrayList<String> cardList;
 
     public Deck(JsonNode data) {
         // JsonNode 에서 파시앟여 저장.
