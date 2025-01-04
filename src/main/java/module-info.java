@@ -7,6 +7,7 @@ module com.example.marvelsnaptracker {
     requires io.github.cdimascio.dotenv.java;
     requires com.fasterxml.jackson.databind;
     requires static lombok;
+    requires java.desktop;
 
     opens com.example.marvelsnaptracker to javafx.fxml;
     exports com.example.marvelsnaptracker;

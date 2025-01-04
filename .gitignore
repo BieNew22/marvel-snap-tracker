@@ -21,6 +21,8 @@ target/
 .springBeans
 .sts4-cache
 .env
+.autocp
+images/*
 
 ### NetBeans ###
 /nbproject/private/
