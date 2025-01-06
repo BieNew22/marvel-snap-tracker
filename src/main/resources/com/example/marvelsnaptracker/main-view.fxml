@@ -3,7 +3,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<ScrollPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.example.marvelsnaptracker.contoller.MainController">
+<ScrollPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.example.marvelsnaptracker.contoller.MainController"
+prefWidth="510" prefHeight="700" fitToWidth="true">
 
-  <VBox fx:id="deckContainer" />
+  <VBox fx:id="deckContainer" alignment="CENTER" />
+
 </ScrollPane>
