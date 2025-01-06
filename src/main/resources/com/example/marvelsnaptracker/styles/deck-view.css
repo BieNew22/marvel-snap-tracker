@@ -1,13 +1,45 @@
+/* 덱 전체 컨테이너 */
 .deck-container {
     -fx-border-color: black;
     -fx-background-color: lightblue;
 }
 
+/* 덱 카드 정보를 보여주는 것 */
 .card-container {
     -fx-border-color: black;
     -fx-background-color: black;
     -fx-alignment: center;
     -fx-padding: 10 0 10 0; /* top, right, bottom, left 순서 */
+}
+
+/* 정보 관련 최상위 컨테이너 */
+.deck-info-container {
+    -fx-background-color: black;
+    -fx-border-color: white transparent white transparent;
+    -fx-border-width: 1 0 1 0;
+}
+
+/* 승률 정보와 게임 수 정보 */
+.info-container {
+    -fx-pref-width: 100;
+    -fx-alignment: center;
+}
+
+/* 덱 정보 Label (games, win rate 등) */
+.deck-info-name-label {
+    -fx-padding: 7 0 0 0;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+    -fx-font-family: 'sans-serif';
+}
+
+.deck-info-data-label {
+    -fx-font-family: 'sans-serif';
+    -fx-padding: 0 0 5 0;
+    -fx-text-fill: white;
+    -fx-font-size: 17px;
 }
 
 /*

@@ -11,7 +11,7 @@
       alignment="CENTER" prefHeight="200.0" maxWidth="450.0"
       style="-fx-border-color: black; -fx-background-color: lightblue;">
     <stylesheets>
-        <URL value="@deck-view.css"/>
+        <URL value="@styles/deck-view.css"/>
     </stylesheets>
 
     <VBox.margin>
@@ -29,19 +29,19 @@
     </Label>
 
     <!-- 덱 승률 명시 하는 곳 -->
-    <VBox>
-        <HBox>
-            <Label text="Winrate"/>
-            <Label text="Game"/>
-        </HBox>
+    <HBox styleClass="deck-info-container">
+        <VBox styleClass="info-container">
+            <Label text="Win rate" styleClass="deck-info-name-label" />
+            <Label text="0.0%" styleClass="deck-info-data-label" />
+        </VBox>
 
-        <HBox>
-            <Label text="0.0%"/>
-            <Label text="1-1"/>
-        </HBox>
+        <VBox styleClass="info-container">
+            <Label text="Games" styleClass="deck-info-name-label" />
+            <Label text="999+" styleClass="deck-info-data-label" />
+        </VBox>
 
         <Label text="Copy Deck"/>
-    </VBox>
+    </HBox>
 
     <!-- 덱 카드 정보 보여주는 곳   -->
     <VBox styleClass="card-container">
