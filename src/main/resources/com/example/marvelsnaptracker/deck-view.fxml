@@ -8,14 +8,14 @@
 <?import javafx.geometry.Insets?>
 <VBox xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.example.marvelsnaptracker.contoller.DeckController"
-      alignment="CENTER" prefHeight="200.0" prefWidth="300.0"
+      alignment="CENTER" prefHeight="200.0" maxWidth="450.0"
       style="-fx-border-color: black; -fx-background-color: lightblue;">
     <stylesheets>
         <URL value="@deck-view.css"/>
     </stylesheets>
 
     <VBox.margin>
-        <Insets  bottom="10"/>
+        <Insets  bottom="5" top="5"/>
     </VBox.margin>
 
     <!--    <VBox.margin>-->

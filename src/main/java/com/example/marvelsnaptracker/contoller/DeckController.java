@@ -33,7 +33,7 @@ public class DeckController {
         int posX = 0, posY = 0;
 
         // 다음 사진의 위치
-        int gabX = 65, gabY = 85;
+        int gabX = 75, gabY = 100;
 
         for (int i = 0; i < cards.size(); i++) {
             // 이미지 로드 : png 파일이 없으면 webp 를 다운 받아서 png로 변환
@@ -51,8 +51,8 @@ public class DeckController {
 
             // ImageView에 이미지 설정
             ImageView imageView = new ImageView(image);
-            imageView.setFitHeight(80);
-            imageView.setFitWidth(80);
+            imageView.setFitHeight(100);
+            imageView.setFitWidth(100);
             imageView.getStyleClass().add("no-padding");
             imageView.setPreserveRatio(true);
 
