@@ -1,22 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import java.net.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import java.net.URL?>
-<VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.marvelsnaptracker.contoller.DeckController"
-      prefHeight="400.0" prefWidth="600.0">
+<?import javafx.geometry.Insets?>
+<VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.marvelsnaptracker.contoller.DeckController"
+    >
     <stylesheets>
-        <URL value="@deck-view.css"/>
+        <URL value="@deck-view.css" />
     </stylesheets>
-    <Label fx:id="title" styleClass="title"/>
 
-    <HBox fx:id="deckLine1" spacing="10" alignment="center" />
-    <HBox fx:id="deckLine2" spacing="10" alignment="center" />
+<!--    <VBox.margin>-->
+<!--        <Insets bottom="10" left="10" right="10" top="10" />-->
+<!--    </VBox.margin>-->
+
+    <Label fx:id="title">
+<!--        <font>-->
+<!--            <Font name="System Bold" size="12.0" />-->
+<!--        </font>-->
+    </Label>
+
+    <!-- 덱 승률 명시 하는 곳 -->
+    <VBox>
+        <HBox>
+            <Label text="Winrate" />
+            <Label text="Game" />
+        </HBox>
+
+        <HBox>
+            <Label text="0.0%" />
+            <Label text="1-1" />
+        </HBox>
+
+        <Label text="Copy Deck"/>
+    </VBox>
+
+    <!-- 덱 카드 정보 보여주는 곳   -->
+    <VBox>
+        <AnchorPane fx:id="cardList"/>
+    </VBox>
 </VBox>
-    
