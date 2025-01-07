@@ -3,12 +3,14 @@ package com.example.marvelsnaptracker.contoller;
 import com.example.marvelsnaptracker.MainApplication;
 import com.example.marvelsnaptracker.decks.Deck;
 import com.example.marvelsnaptracker.utils.WebPToPNGConverter;
+import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -22,6 +24,12 @@ public class DeckController {
     @FXML
     private AnchorPane cardList;
 
+    @FXML Label copyDeckLabel;
+
+    /**
+     * deck-view 에서 초기 뷰 설정
+     * @param deck deck-view에 보여질 deck
+     */
     public void setDeck(Deck deck) {
         // deck 이름 가져오기
         title.setText(deck.getName());
@@ -69,5 +77,58 @@ public class DeckController {
 
             cardList.getChildren().add(imageView);
         }
+
+        // copy deck label에 이벤트 추가
+        setCopyDeckLabelEvent();
+    }
+
+    /**
+     * copy deck label에 evnet 추가
+     */
+    private void setCopyDeckLabelEvent() {
+        // hover 이벤트 추가
+        copyDeckLabel.setOnMouseEntered(e -> animateBackground(copyDeckLabel, 73, 0));
+
+        copyDeckLabel.setOnMouseExited(e -> animateBackground(copyDeckLabel, 0, 73));
+    }
+
+    /**
+     * copy deck label 의 백경색 애니메이션
+     * @param label copy deck label
+     * @param fromPercent 시작 퍼센트
+     * @param toPercent 종료 퍼센트
+     */
+    private void animateBackground(Label label, double fromPercent, double toPercent) {
+        final double[] currentPercent = {fromPercent};
+        double animationDuration = 500; // 밀리초
+        double frameRate = 60; // 초당 프레임
+
+        double totalFrames = animationDuration / (1000 / frameRate);
+        double step = (toPercent - fromPercent) / totalFrames;
+
+        AnimationTimer timer = new AnimationTimer() {
+            private long lastUpdate = 0;
+
+            @Override
+            public void handle(long now) {
+                if (lastUpdate == 0 || now - lastUpdate >= 1_000_000_000 / frameRate) {
+                    currentPercent[0] += step;
+
+                    // 스타일 업데이트
+                    label.setStyle(String.format(
+                            "-fx-background-color: linear-gradient(from 0%% 0%% to 100%% 100%%, rgba(99, 33, 163, 0.70) %.2f%%, rgba(99, 33, 163, 0.5) 50%%);",
+                            currentPercent[0]
+                    ));
+
+                    lastUpdate = now;
+
+                    // 애니메이션 종료 조건
+                    if ((step > 0 && currentPercent[0] >= toPercent) || (step < 0 && currentPercent[0] <= toPercent)) {
+                        stop();
+                    }
+                }
+            }
+        };
+        timer.start();
     }
 }
