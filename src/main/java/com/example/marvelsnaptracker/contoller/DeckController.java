@@ -90,8 +90,8 @@ public class DeckController {
                 "linear-gradient(from 0%% 0%% to 100%% 100%%, " +
                 "rgba(99, 33, 163, 0.70) %.2f%%, rgba(99, 33, 163, 0.5) 50%%);";
 
-        int basicPos = 75;
-        int hoverPos = 0;
+        double basicPos = 75.0;
+        double hoverPos = 0.0;
 
         // 기본 배경 색상 설정
         copyDeckLabel.setStyle(String.format(formatCSS, basicPos));
@@ -109,7 +109,7 @@ public class DeckController {
      */
     private void animateBackground(String formatString, double fromPercent, double toPercent) {
         final double[] currentPercent = {fromPercent};
-        double animationDuration = 500; // 밀리초
+        double animationDuration = 300; // 밀리초
         double frameRate = 60; // 초당 프레임
 
         double totalFrames = animationDuration / (1000 / frameRate);
