@@ -1,22 +1,20 @@
 /* 덱 전체 컨테이너 */
 .deck-container {
-    -fx-border-color: black;
-    -fx-background-color: lightblue;
+    -fx-background-color: black;
+    -fx-background-radius: 15;
 }
 
 /* 덱 카드 정보를 보여주는 것 */
 .card-container {
-    -fx-border-color: black;
-    -fx-background-color: black;
     -fx-alignment: center;
     -fx-padding: 10 0 10 0; /* top, right, bottom, left 순서 */
 }
 
 /* 정보 관련 최상위 컨테이너 */
 .deck-info-container {
-    -fx-background-color: black;
     -fx-border-color: white transparent white transparent;
     -fx-border-width: 1 0 1 0;
+    -fx-alignment: center_left;
 }
 
 /* 승률 정보와 게임 수 정보 */
@@ -26,7 +24,7 @@
 }
 
 /* 덱 정보 Label (games, win rate 등) */
-.deck-info-name-label {
+.deck-info-tags-label {
     -fx-padding: 7 0 0 0;
     -fx-text-fill: white;
     -fx-font-size: 14px;
@@ -42,47 +40,44 @@
     -fx-font-size: 17px;
 }
 
-/*
-.deck-main-container {
-    -fx-border-color: black;
-    -fx-border-width: 2;
-    -fx-border-radius: 5;
-}
-
-.title {
-    -fx-background-color: #3498db;
+.copy-deck-label {
+    -fx-pref-width: 150;
+    -fx-pref-height: 30;
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(99, 33, 163, 0.70) 73%, rgba(99, 33, 163, 0.5) 50%);
+    -fx-font-family: 'Arial Black', 'sans-serif';
+    -fx-font-width: bold;
     -fx-text-fill: white;
-    -fx-font-size: 14px;
-
-}
-
-.card-list-container {
-    -fx-border-color: black;
-    -fx-border-width: 2;
     -fx-border-radius: 5;
-    -fx-padding: 10;
-}
-
-.deck {
-    -fx-min-width: 270px;
-    -fx-max-width: 270px;
-}
-
-.win-label {
-    -fx-min-width: 50;
-    -fx-max-width: 50;
+    -fx-background-radius: 5;
     -fx-alignment: center;
-    -fx-border-color: black;
+    -fx-transition: -fx-background-color 1s;
 }
 
-.game-label {
-    -fx-min-width: 50;
-    -fx-max-width: 50;
-    -fx-alignment: center;
-    -fx-border-color: black;
+/* deck 제목 정보를 담은 컨테이너 */
+.title-container {
+    -fx-alignment: center_left;
 }
 
-.no-padding {
-    -fx-label-padding: 0 0 0 0;
-    -fx-padding: 0 0 0 0;
-}*/
+/* 제목 label */
+.title-label {
+    -fx-font-family: 'Arial Black', 'sans-serif';
+    -fx-padding: 10 0 10 15;
+    -fx-font-size: 20px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-max-width: 250;
+    -fx-min-width: 250;
+}
+
+/* deck 플레이 타임에 대한 컨테이너 */
+.deck-play-time-info-label {
+    -fx-alignment: center_left;
+    -fx-font-family: 'Sans Serif Collection', 'sans-serif';
+    -fx-text-fill: rgba(255, 255, 255, 0.7);
+}
+
+.deck-play-time-data-label {
+    -fx-alignment: center_left;
+    -fx-font-family: 'Arial Black', 'sans-serif';
+    -fx-text-fill: white;
+}
