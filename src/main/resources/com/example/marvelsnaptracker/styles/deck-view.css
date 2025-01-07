@@ -41,16 +41,15 @@
 }
 
 .copy-deck-label {
+    /* background color -> DeckController.java에서 관리 , transition 때문에 */
     -fx-pref-width: 150;
     -fx-pref-height: 30;
-    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(99, 33, 163, 0.70) 73%, rgba(99, 33, 163, 0.5) 50%);
     -fx-font-family: 'Arial Black', 'sans-serif';
     -fx-font-width: bold;
     -fx-text-fill: white;
     -fx-border-radius: 5;
     -fx-background-radius: 5;
     -fx-alignment: center;
-    -fx-transition: -fx-background-color 1s;
 }
 
 /* deck 제목 정보를 담은 컨테이너 */

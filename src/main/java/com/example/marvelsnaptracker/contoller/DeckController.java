@@ -86,19 +86,28 @@ public class DeckController {
      * copy deck label에 evnet 추가
      */
     private void setCopyDeckLabelEvent() {
-        // hover 이벤트 추가
-        copyDeckLabel.setOnMouseEntered(e -> animateBackground(copyDeckLabel, 73, 0));
+        String formatCSS = "-fx-background-color:" +
+                "linear-gradient(from 0%% 0%% to 100%% 100%%, " +
+                "rgba(99, 33, 163, 0.70) %.2f%%, rgba(99, 33, 163, 0.5) 50%%);";
 
-        copyDeckLabel.setOnMouseExited(e -> animateBackground(copyDeckLabel, 0, 73));
+        int basicPos = 75;
+        int hoverPos = 0;
+
+        // 기본 배경 색상 설정
+        copyDeckLabel.setStyle(String.format(formatCSS, basicPos));
+
+        // hover 이벤트
+        copyDeckLabel.setOnMouseEntered(e -> animateBackground(formatCSS, basicPos, hoverPos));
+        copyDeckLabel.setOnMouseExited(e -> animateBackground(formatCSS, hoverPos, basicPos));
     }
 
     /**
      * copy deck label 의 백경색 애니메이션
-     * @param label copy deck label
+     * @param formatString copy deck label 의 기본 배경 format
      * @param fromPercent 시작 퍼센트
      * @param toPercent 종료 퍼센트
      */
-    private void animateBackground(Label label, double fromPercent, double toPercent) {
+    private void animateBackground(String formatString, double fromPercent, double toPercent) {
         final double[] currentPercent = {fromPercent};
         double animationDuration = 500; // 밀리초
         double frameRate = 60; // 초당 프레임
@@ -115,10 +124,7 @@ public class DeckController {
                     currentPercent[0] += step;
 
                     // 스타일 업데이트
-                    label.setStyle(String.format(
-                            "-fx-background-color: linear-gradient(from 0%% 0%% to 100%% 100%%, rgba(99, 33, 163, 0.70) %.2f%%, rgba(99, 33, 163, 0.5) 50%%);",
-                            currentPercent[0]
-                    ));
+                    copyDeckLabel.setStyle(String.format(formatString , currentPercent[0]));
 
                     lastUpdate = now;
 
