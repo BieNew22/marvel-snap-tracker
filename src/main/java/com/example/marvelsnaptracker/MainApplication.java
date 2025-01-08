@@ -1,11 +1,11 @@
 package com.example.marvelsnaptracker;
 
 import com.example.marvelsnaptracker.decks.DeckManager;
+import com.example.marvelsnaptracker.utils.DatabaseDriver;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.*;
 
@@ -27,7 +27,10 @@ public class MainApplication extends Application {
 
         // 사용자 덱 정보 초기화하기
         DeckManager.getInstance().initDeck();
-        DeckManager.getInstance().showDeckList();
+
+        DatabaseDriver db = new DatabaseDriver();
+        db.initDB();
+
         launch();
     }
 }

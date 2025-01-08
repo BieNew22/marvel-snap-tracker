@@ -8,6 +8,7 @@ module com.example.marvelsnaptracker {
     requires com.fasterxml.jackson.databind;
     requires static lombok;
     requires java.desktop;
+    requires java.sql;
 
     opens com.example.marvelsnaptracker to javafx.fxml;
     exports com.example.marvelsnaptracker;
