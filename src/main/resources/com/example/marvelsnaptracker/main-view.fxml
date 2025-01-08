@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import java.net.URL?>
+<ScrollPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.example.marvelsnaptracker.contoller.MainController"
+            styleClass="main-container" fitToWidth="true">
+
+  <stylesheets>
+    <URL value="@styles/main-view.css" />
+  </stylesheets>
+
+  <VBox fx:id="deckContainer" alignment="CENTER" />
+
+</ScrollPane>

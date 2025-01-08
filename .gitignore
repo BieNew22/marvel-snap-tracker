@@ -20,6 +20,11 @@ target/
 .settings
 .springBeans
 .sts4-cache
+.env
+.autocp
+
+images/*
+!images/background.jpg
 
 ### NetBeans ###
 /nbproject/private/
