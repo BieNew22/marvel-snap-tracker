@@ -1,0 +1,11 @@
+.main-container {
+    -fx-pref-width: 510;
+    -fx-pref-height: 700;
+    -fx-background-color: black;
+}
+
+.main-container > .viewport {
+    -fx-background-image: url("file:images/background.jpg");
+    -fx-background-position: center;
+    -fx-background-size: contain;
+}
