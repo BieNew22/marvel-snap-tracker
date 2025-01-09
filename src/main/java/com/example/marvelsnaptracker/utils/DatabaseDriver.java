@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  * db 와 통신 하는 부분 관리 하는 클래스, singleton
@@ -31,17 +32,30 @@ public class DatabaseDriver {
         try (Statement stmt = conn.createStatement()) {
             // init.sql 파일 읽기
             BufferedReader br = new BufferedReader(new FileReader(initSqlFile));
-            String line;
-            StringBuilder sql = new StringBuilder();
 
+            String line;
+            StringBuilder sb = new StringBuilder();
+
+            ArrayList<String> queryList = new ArrayList<>();
             while ((line = br.readLine()) != null) {
+                // init.sql 에서 주석 제거하기
                 if (!line.startsWith("--") && !line.isEmpty())
-                    sql.append(line).append("\n");
+                    sb.append(line).append("\n");
+
+                // 쿼리 구분하기
+                if (line.endsWith(";")) {
+                    queryList.add(sb.toString());
+                    sb = new StringBuilder();
+                }
             }
 
-            System.out.println(sql.toString());
-            // SQL 스크립트 실행
-            stmt.execute(sql.toString());
+            // init.sql 의 모든 쿼리 추가
+            for (String sql: queryList) {
+                stmt.addBatch(sql);
+            }
+
+            // 실행.
+            stmt.executeBatch();
         } catch (IOException e) {
             System.out.println("Error executing init.sql: " + e.getMessage());
         } catch (SQLException e) {
