@@ -3,18 +3,20 @@
 -- 외래키 활성화
 PRAGMA foreign_keys = ON;
 
--- 첫 번째 테이블 생성 (users 테이블)
-CREATE TABLE IF NOT EXISTS users (
-    id INTEGER PRIMARY KEY,
+-- 덱 테이블 생성
+CREATE TABLE IF NOT EXISTS deck (
+    id TEXT PRIMARY KEY,
     name TEXT NOT NULL,
-    age INTEGER
+    win_rate REAL,
+    game_count INTEGER,
+    last_play TEXT
 );
 
--- 두 번째 테이블 생성 (orders 테이블)
-CREATE TABLE IF NOT EXISTS orders (
-    order_id INTEGER PRIMARY KEY,
-    user_id INTEGER,
-    order_date TEXT,
-    FOREIGN KEY (user_id) REFERENCES users(id)
+-- 덱에 있는 카드 리스트 테이블 생성
+CREATE TABLE IF NOT EXISTS cards (
+    id INTEGER PRIMARY KEY,
+    owner TEXT,
+    name TEXT,
+    FOREIGN KEY (owner) REFERENCES deck(id)
 );
 

@@ -3,6 +3,7 @@ package com.example.marvelsnaptracker.decks;
 import com.example.marvelsnaptracker.utils.EnvManager;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.Getter;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,11 +15,10 @@ import java.util.LinkedList;
  * 사용자 덱을 관리하는 클래스, Singleton
  */
 public class DeckManager {
+    @Getter
     private static final DeckManager instance = new DeckManager();
 
     private DeckManager() {}
-
-    public static DeckManager getInstance() { return instance; }
 
     ArrayList<Deck> deckList;
 

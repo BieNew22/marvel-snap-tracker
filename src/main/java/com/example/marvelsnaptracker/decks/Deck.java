@@ -17,6 +17,15 @@ public class Deck {
     // 덱 이름
     private final String name;
 
+    // 덱 승률
+    private double winRate;
+
+    // 덱 플레이 횟수
+    private int playCount;
+
+    // 덱 최종 플레이한 일자
+    private String lastPlay;
+
     // 덱 카드 리스트 (카드 이름)
     private final ArrayList<String> cardList;
 
