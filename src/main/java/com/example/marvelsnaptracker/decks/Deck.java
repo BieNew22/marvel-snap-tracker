@@ -25,7 +25,7 @@ public class Deck {
     private int playCount;
 
     // 덱 최종 플레이한 일자
-    private String lastPlay;
+    private String lastPlay = "0000-00-00 00:00";
 
     // 덱 카드 리스트 (카드 이름)
     private ArrayList<String> cardList;
