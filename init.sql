@@ -3,6 +3,9 @@
 -- 외래키 활성화
 PRAGMA foreign_keys = ON;
 
+DROP TABLE IF EXISTS cards;
+DROP TABLE IF EXISTS deck;
+
 -- 덱 테이블 생성
 CREATE TABLE IF NOT EXISTS deck (
     id TEXT PRIMARY KEY,
@@ -20,3 +23,9 @@ CREATE TABLE IF NOT EXISTS cards (
     FOREIGN KEY (owner) REFERENCES deck(id)
 );
 
+INSERT INTO deck VALUES ('test', 'test-deck', 0.0, 0, '2025-01-10 10:41');
+INSERT INTO cards(owner, name) VALUES ('test', 'A');
+INSERT INTO cards(owner, name) VALUES ('test', 'B');
+INSERT INTO cards(owner, name) VALUES ('test', 'C');
+INSERT INTO cards(owner, name) VALUES ('test', 'D');
+INSERT INTO cards(owner, name) VALUES ('test', 'E');

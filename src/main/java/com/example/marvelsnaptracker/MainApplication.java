@@ -25,11 +25,11 @@ public class MainApplication extends Application {
 
     public static void main(String[] args) {
 
+        // DB 초기화
+        DatabaseDriver.getInstance().initDB();
+
         // 사용자 덱 정보 초기화하기
         DeckManager.getInstance().initDeck();
-
-        DatabaseDriver db = new DatabaseDriver();
-        db.initDB();
 
         launch();
     }

@@ -10,12 +10,13 @@ import java.util.ArrayList;
  * 사용자 덱 객체
  */
 @Getter
+@Setter
 public class Deck {
     // 덱 고유 ID
-    private final String id;
+    private String id;
 
     // 덱 이름
-    private final String name;
+    private String name;
 
     // 덱 승률
     private double winRate;
@@ -27,7 +28,9 @@ public class Deck {
     private String lastPlay;
 
     // 덱 카드 리스트 (카드 이름)
-    private final ArrayList<String> cardList;
+    private ArrayList<String> cardList;
+
+    public Deck() {}
 
     public Deck(JsonNode data) {
         // JsonNode 에서 파시앟여 저장.

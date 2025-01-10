@@ -1,5 +1,6 @@
 package com.example.marvelsnaptracker.decks;
 
+import com.example.marvelsnaptracker.utils.DatabaseDriver;
 import com.example.marvelsnaptracker.utils.EnvManager;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -20,7 +21,7 @@ public class DeckManager {
 
     private DeckManager() {}
 
-    ArrayList<Deck> deckList;
+    ArrayList<Deck> deckList = new ArrayList<>();
 
     /**
      * 사용자 덱 정보를 초기화 함.
@@ -28,10 +29,23 @@ public class DeckManager {
      */
     public void initDeck() {
 
-        if (deckList != null)
-            return;
+        // json 통하여 덱 정보를 조회
+        ArrayList<Deck> deckFromJson = initDeckJson();
 
-        deckList = new ArrayList<>();
+        // DB 통하여 덱 정보를 조회
+        ArrayList<Deck> deckFromDB = DatabaseDriver.getInstance().getAllDecks();
+
+        for (Deck d: deckFromDB)
+            System.out.println(d);
+    }
+
+    /**
+     * 사용자 덱 정보 초기화 : CollectionState.json을 통하여 초기화.
+     *
+     * @return Deck List
+     */
+    private ArrayList<Deck> initDeckJson() {
+        ArrayList<Deck> res = new ArrayList<>();
 
         // root -> ServerState -> Decks : 사용자 덱 정보
         String fileName = "CollectionState.json";
@@ -47,11 +61,16 @@ public class DeckManager {
 
             // 사용자 덱 리스트 추가
             for (JsonNode deck: decks) {
-                deckList.add(new Deck(deck));
+                res.add(new Deck(deck));
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Can't find file or else");
+            System.out.println("error message : " + e.getMessage());
+
+            return new ArrayList<>();
         }
+
+        return res;
     }
 
     /**
