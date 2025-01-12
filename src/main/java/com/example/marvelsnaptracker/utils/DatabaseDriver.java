@@ -5,7 +5,10 @@ import lombok.Getter;
 
 import java.io.*;
 import java.sql.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * db 와 통신 하는 부분 관리 하는 클래스, singleton
@@ -154,6 +157,53 @@ public class DatabaseDriver {
         } catch (SQLException e) {
             System.out.println("DatabaseDriver.insertDeck : " + e.getMessage());
             System.out.println(deck);
+        }
+    }
+
+    /**
+     * DB에 덱 이름 업데이트
+     *
+     * @param deckID 이름 변경할 덱 ID
+     * @param newName 덱 새로운 이름
+     */
+    public void updateDeckName(String deckID, String newName) {
+        String sql = "UPDATE deck SET name = ? WHERE id = ?";
+
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setString(1, newName);
+            pstmt.setString(2, deckID);
+
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("DatabaseDriver.updateDeckName : " + e.getMessage());
+        }
+    }
+
+
+    // DB 덱 ID 업데이트할 때 새로운 ID에 더할 salt 값.
+    int salt = 0;
+
+    /**
+     * DB 덱 ID 업데이트
+     *
+     * @param deckID 업데이트할 덱 ID
+     */
+    public void updateDeckID(String deckID) {
+        String sql = "UPDATE deck SET name = ? WHERE id = ?";
+
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy-MM-dd-HH-mm-ss");
+
+            pstmt.setString(1, now.format(formatter) + salt);
+            pstmt.setString(2, deckID);
+
+            salt += 1;
+
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("DatabaseDriver.updateDeckName : " + e.getMessage());
         }
     }
 }

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * 사용자 덱 객체
@@ -41,6 +42,33 @@ public class Deck {
         for (JsonNode card: data.get("Cards")) {
             cardList.add(card.get("CardDefId").asText());
         }
+    }
+
+    // compare 함수가 리턴할 상수들.
+    public static int DECK_DIFF_NAME = 1;
+    public static int DECK_DIFF_CARD = -1;
+    public static int DECK_EQUAL = 0;
+
+    /**
+     * 다른 deck과 비교함.
+     *
+     * @param deck 비교할 덱
+     * @return 0 : 동일한 경우, -1
+     */
+    public int compare(Deck deck) {
+
+        // 카드에 변경 상황이 존재할 때
+        if (!cardList.containsAll(deck.getCardList())) {
+            return DECK_DIFF_CARD;
+        }
+
+        // 카드는 동일 제목이 같을 때
+        if (deck.getName().equalsIgnoreCase(name)) {
+            return DECK_EQUAL;
+        }
+
+        // 카드 제목이 다를 때
+        return DECK_DIFF_NAME;
     }
 
     @Override
