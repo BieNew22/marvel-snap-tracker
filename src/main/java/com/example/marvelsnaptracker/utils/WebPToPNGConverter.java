@@ -1,7 +1,6 @@
 package com.example.marvelsnaptracker.utils;
 
 
-import io.github.cdimascio.dotenv.Dotenv;
 import lombok.Getter;
 
 import javax.imageio.ImageIO;
@@ -9,7 +8,6 @@ import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.InputStream;
 import java.net.URL;
 
 /**
@@ -30,7 +28,7 @@ public class WebPToPNGConverter {
         String pngPath = "images/" + name + ".png";
         String webpPath = "images/" + name + ".webp";
 
-        String imageUrl = EnvManager.getInstance().CARD_URL + name + ".webp";
+        String imageUrl = EnvManager.getInstance().CARD_IMG_URL + name + ".webp";
         try {
             // 변환된 파일 유무 확인
             File pngFile = new File(pngPath);
