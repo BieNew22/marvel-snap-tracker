@@ -33,10 +33,6 @@ public class DeckManager {
         ArrayList<Deck> deckFromDB = DatabaseDriver.getInstance().getAllDecks();
 
         // DB와 Json 동기화 시키기.
-        // Json에 있는 덱 id 가져오기
-        HashSet<String> jsonIDs = new HashSet<>();
-        for (Deck d: deckFromJson)
-            jsonIDs.add(d.getId());
 
         // DB에 있는 덱 id 가져오기
         // key : deck id, value : deck index
@@ -55,7 +51,6 @@ public class DeckManager {
                  *  -> 이름이 다른 경우 : 이름만 업데이트
                  *  -> 카드가 다른 경우 : 새로운 덱으로 판단, 기존 덱을 새로운 덱으로 저장 후 지금 덱을 새로 저장
                  */
-                // TODO : 구현하기 - DB 스키마 변경
                 Deck inDB = deckFromDB.get(dbIDs.get(deck.getId()));
                 int res = inDB.compare(deck);
 

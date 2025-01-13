@@ -1,14 +1,20 @@
 package com.example.marvelsnaptracker.utils;
 
+import com.example.marvelsnaptracker.decks.Card;
 import com.example.marvelsnaptracker.decks.Deck;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Getter;
 
 import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.UUID;
+import java.util.List;
 
 /**
  * db 와 통신 하는 부분 관리 하는 클래스, singleton
@@ -29,12 +35,18 @@ public class DatabaseDriver {
     }
 
     /**
-     * init.sql 을 통하여 DB 초기화
+     * db를 초기화 함.
      */
     public void initDB() {
+        initTable();
+        initCardsData();
+    }
 
+    /**
+     * init.sql을 통하여 DB 테이블 생성.
+     */
+    private void initTable() {
         String initSqlFile = "init.sql";
-
         try (Statement stmt = connection.createStatement()) {
             // init.sql 파일 읽기
             BufferedReader br = new BufferedReader(new FileReader(initSqlFile));
@@ -62,13 +74,105 @@ public class DatabaseDriver {
 
             // 실행.
             stmt.executeBatch();
-        } catch (IOException e) {
-            System.out.println("DatabaseDriver.initDB : " + e.getMessage());
-        } catch (SQLException e) {
-            System.out.println("DatabaseDriver.initDB : " + e.getMessage());     // 오류 메시지 출력
-            System.out.println("SQL State: " + e.getSQLState());    // SQL 상태 코드 출력
-            System.out.println("Error Code: " + e.getErrorCode());  // 오류 코드 출력
+        } catch (IOException | SQLException e) {
+            System.out.println("DatabaseDriver.initTable : " + e.getMessage());
+            System.exit(-1);
         }
+    }
+
+    /**
+     * cards.json을 통하여 card DB에 데이터 추가.
+     */
+    private void initCardsData() {
+        try {
+            // 연결 설정
+            HttpURLConnection httpConnection =
+                    (HttpURLConnection) new URL(EnvManager.getInstance().CARD_DATA_URL).openConnection();
+
+            System.out.println(EnvManager.getInstance().CARD_DATA_URL);
+
+            httpConnection.setRequestMethod("GET");
+            httpConnection.setRequestProperty("Accept", "application/json");
+            httpConnection.setInstanceFollowRedirects(true);    // 리다이렉트 허용
+
+            int status = httpConnection.getResponseCode();
+            if (status == HttpURLConnection.HTTP_OK) {
+                // 통신 성공 -> 데이터 잘 불러옴.
+
+                // 데이터 처리하기
+                try (BufferedReader in = new BufferedReader(
+                        new InputStreamReader(httpConnection.getInputStream()))) {
+
+                    // 0. 데이터 읽어오기
+                    StringBuilder responseJson = new StringBuilder();
+
+                    String inputLine;
+                    while ((inputLine = in.readLine()) != null) {
+                        responseJson.append(inputLine);
+                    }
+
+                    // 1. Jackson으로 파싱
+                    ObjectMapper objectMapper = new ObjectMapper();
+
+                    List<Card> cardList =  objectMapper.readValue(
+                            responseJson.toString(),
+                            new TypeReference<>() {
+                            }
+                    );
+
+                    // 2. db에 데이터 추가
+                    insertOrUpdateCards(cardList);
+                } catch (IOException e) {
+                    System.out.println("DatabaseDriver.initCardData : Parsing & Read Data error");
+                    System.exit(-1);
+                }
+            } else {
+                // 통신 실패 -> 종료
+                System.out.println("DatabaseDriver.initCardData : Can't connect CARD_DATA_URL");
+                System.exit(-1);
+            }
+        } catch (Exception e) {
+            System.out.println("DatabaseDriver.initCardData : " + e.getMessage());
+            e.printStackTrace();
+            System.exit(-1);
+        }
+    }
+
+    /**
+     * 카드 데이터를 DB에 저장 함.
+     * 이미 있는 경우 데이터를 업데이트 수행
+     *
+     * @param cards DB에 저장할 카드 데이터
+     */
+    private void insertOrUpdateCards(List<Card> cards) {
+        String sql = """
+        INSERT INTO card (name, cost, power)
+        VALUES (?, ?, ?)
+        ON CONFLICT(name) DO UPDATE SET
+            cost = excluded.cost,
+            power = excluded.power;
+        """;
+
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+
+            connection.setAutoCommit(false);
+
+            for (Card now: cards) {
+                pstmt.setString(1, now.getName());
+                pstmt.setInt(2, now.getCost());
+                pstmt.setInt(3, now.getPower());
+                pstmt.addBatch();
+            }
+
+            pstmt.executeBatch();
+
+            connection.commit();
+            connection.setAutoCommit(true);
+        } catch (SQLException e) {
+            System.out.println("DatabaseDriver.insertOrUpdateCards : " + e.getMessage());
+            System.exit(-1);
+        }
+
     }
 
     /**
