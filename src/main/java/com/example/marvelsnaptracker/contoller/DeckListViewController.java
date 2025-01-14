@@ -17,7 +17,7 @@ public class DeckListViewController {
     private VBox deckContainer;
 
     /**
-     * 메인 화면, 사용자의 모든 덱 정보를 초기화 함.
+     * 덱 리스트 화면, 사용자의 모든 덱 정보를 보여줌.
      */
     @FXML
     public void initialize() {

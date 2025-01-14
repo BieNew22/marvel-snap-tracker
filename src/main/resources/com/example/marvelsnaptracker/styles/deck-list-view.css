@@ -1,11 +1,12 @@
-.main-container {
-    -fx-pref-width: 510;
-    -fx-pref-height: 700;
-    -fx-background-color: black;
+/* deck-list-view 배경 제거 */
+.deck-view-container {
+    -fx-background-color: transparent;
+}
+.deck-view-container > .viewport {
+    -fx-background-color: transparent;
 }
 
-.main-container > .viewport {
-    -fx-background-image: url("file:images/background.jpg");
-    -fx-background-position: center;
-    -fx-background-size: contain;
+/* 스크롤바의 배경 제거 */
+.deck-view-container .scroll-bar:vertical {
+    -fx-background-color: transparent;
 }

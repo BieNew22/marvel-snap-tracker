@@ -1,0 +1,17 @@
+.main-container {
+    -fx-pref-width: 510;
+    -fx-pref-height: 700;
+    -fx-background-image: url("file:images/background.jpg");
+    -fx-background-position: center;
+    -fx-background-size: contain;
+}
+
+.taskbar-container {
+    -fx-pref-height: 70;
+    -fx-background-color: transparent;
+}
+
+.content-container {
+    -fx-pref-height: 630;
+    -fx-background-color: transparent;
+}

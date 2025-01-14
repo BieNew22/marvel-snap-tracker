@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import java.net.URL?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.marvelsnaptracker.contoller.MainViewController"
+      styleClass="main-container">
+
+    <stylesheets>
+        <URL value="@styles/main-view.css" />
+    </stylesheets>
+
+    <!-- taskbar   -->
+    <HBox styleClass="taskbar-container">
+        <Button text="MAIN" />
+        <Button text="DECK" />
+        <Button text="-" />
+        <Button text="X" />
+    </HBox>
+
+    <VBox styleClass="content-container" fx:id="contentBox" spacing="10" />
+</VBox>
