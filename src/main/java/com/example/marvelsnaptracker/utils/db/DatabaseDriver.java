@@ -1,7 +1,6 @@
 package com.example.marvelsnaptracker.utils.db;
 
-import com.example.marvelsnaptracker.decks.Card;
-import com.example.marvelsnaptracker.decks.Deck;
+import com.example.marvelsnaptracker.card.Card;
 import com.example.marvelsnaptracker.utils.EnvManager;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -23,6 +22,7 @@ import java.util.List;
 public class DatabaseDriver {
     @Getter
     private static final DatabaseDriver instance = new DatabaseDriver();
+    @Getter
     private Connection connection;
 
     private DatabaseDriver() {
@@ -122,7 +122,7 @@ public class DatabaseDriver {
                     );
 
                     // 2. db에 데이터 추가
-                    insertOrUpdateCards(cardList);
+                    CardService.getInstance().insertOrUpdateCards(cardList);
                 } catch (IOException e) {
                     System.out.println("DatabaseDriver.initCardData : Parsing & Read Data error");
                     System.exit(-1);
@@ -139,135 +139,6 @@ public class DatabaseDriver {
         }
     }
 
-    /**
-     * 카드 데이터를 DB에 저장 함.
-     * 이미 있는 경우 데이터를 업데이트 수행
-     *
-     * @param cards DB에 저장할 카드 데이터
-     */
-    private void insertOrUpdateCards(List<Card> cards) {
-        String sql = """
-        INSERT INTO card (name, cost, power)
-        VALUES (?, ?, ?)
-        ON CONFLICT(name) DO UPDATE SET
-            cost = excluded.cost,
-            power = excluded.power;
-        """;
-
-        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-
-            connection.setAutoCommit(false);
-
-            for (Card now: cards) {
-                pstmt.setString(1, now.getName());
-                pstmt.setInt(2, now.getCost());
-                pstmt.setInt(3, now.getPower());
-                pstmt.addBatch();
-            }
-
-            pstmt.executeBatch();
-
-            connection.commit();
-            connection.setAutoCommit(true);
-        } catch (SQLException e) {
-            System.out.println("DatabaseDriver.insertOrUpdateCards : " + e.getMessage());
-            System.exit(-1);
-        }
-
-    }
-
-    /**
-     * DB에 있는 모든 덱을 조회하여 리턴
-     *
-     * @return Deck List
-     */
-    public ArrayList<Deck> getAllDecks() {
-        String deckQuery = "SELECT * FROM deck";
-        String cardQuery = "SELECT name FROM cards WHERE owner = ?";
-        try (Statement statement = connection.createStatement()) {
-            // DB 모든 덱 조회
-            ResultSet decks = statement.executeQuery(deckQuery);
-
-            ArrayList<Deck> result = new ArrayList<>();
-            while (decks.next()) {
-                // 덱 ID로 덱에 있는 모든 카드 조회
-                String ID = decks.getString("id");
-
-                try (PreparedStatement pstmt = connection.prepareStatement(cardQuery)) {
-                    pstmt.setString(1, ID);
-
-                    ResultSet cards = pstmt.executeQuery();
-
-                    ArrayList<String> cardList = new ArrayList<>();
-                    while (cards.next()) {
-                        cardList.add(cards.getString("name"));
-                    }
-
-                    // 덱 조립
-                    Deck now = new Deck();
-                    now.setId(ID);
-                    now.setName(decks.getString("name"));
-                    now.setWinRate(decks.getDouble("win_rate"));
-                    now.setPlayCount(decks.getInt("game_count"));
-                    now.setLastPlay(decks.getString("last_play"));
-                    now.setCardList(cardList);
-
-                    result.add(now);
-                } catch (SQLException e) {
-                    System.out.println("DatabaseDriver.getAllDecks : " + e.getMessage());
-                    System.out.println("Deck ID : " + ID);
-                }
-            }
-
-            return result;
-        } catch (Exception e) {
-            System.out.println("DatabaseDriver.getAllDecks : " + e.getMessage());
-            return new ArrayList<>();
-        }
-    }
-
-    public ArrayList<Card> getDeckCards(String id) {
-
-    }
-
-    /**
-     * DB에 덱 정보를 추가.
-     *
-     * @param deck 추가할 덱 정보
-     */
-    public void insertDeck(Deck deck) {
-        // 1 : deck.id, 2 : deck.name, 3 : deck.win_rate, 4 : deck.game_count, 5 : deck.last_play
-        String insertDeckQuery = "INSERT INTO deck VALUES(?, ?, ?, ?, ?)";
-        String insertCardQuery = "INSERT INTO cards (owner, name) VALUES(? ,?)";
-        try (PreparedStatement pstmtDeck = connection.prepareStatement(insertDeckQuery);
-            PreparedStatement pstmtCard = connection.prepareStatement(insertCardQuery)) {
-
-            // db에 덱 넣기
-            pstmtDeck.setString(1, deck.getId());
-            pstmtDeck.setString(2, deck.getName());
-            pstmtDeck.setDouble(3, deck.getWinRate());
-            pstmtDeck.setInt(4, deck.getPlayCount());
-            pstmtDeck.setString(5, deck.getLastPlay());
-
-            int result = pstmtDeck.executeUpdate();
-
-            // 덱 삽입 성공
-            if (result > 0) {
-                // 덱 카드 삽입
-                for (String card: deck.getCardList()) {
-                    pstmtCard.setString(1, deck.getId());
-                    pstmtCard.setString(2, card);
-                    pstmtCard.addBatch();
-                }
-
-                pstmtCard.executeBatch();
-            }
-
-        } catch (SQLException e) {
-            System.out.println("DatabaseDriver.insertDeck : " + e.getMessage());
-            System.out.println(deck);
-        }
-    }
 
     /**
      * DB에 덱 이름 업데이트
