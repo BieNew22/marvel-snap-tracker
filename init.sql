@@ -5,7 +5,7 @@ PRAGMA foreign_keys = ON;
 
 DROP TABLE IF EXISTS deck_card;
 DROP TABLE IF EXISTS deck;
-DROP TABLE IF EXISTS card;
+--DROP TABLE IF EXISTS card;
 
 -- 덱 테이블 생성
 CREATE TABLE IF NOT EXISTS deck (
@@ -32,14 +32,14 @@ CREATE TABLE IF NOT EXISTS deck_card (
     FOREIGN KEY (name) REFERENCES card(name) ON UPDATE CASCADE
 );
 
-INSERT INTO deck VALUES ('test', 'test-deck', 0.0, 0, '2025-01-10 10:41');
-INSERT INTO card VALUES ('Abomination', 5, 9);
-INSERT INTO deck_card(owner, name) VALUES ('test', 'Abomination');
-INSERT INTO deck_card(owner, name) VALUES ('test', 'Abomination');
-INSERT INTO deck_card(owner, name) VALUES ('test', 'Abomination');
-INSERT INTO deck_card(owner, name) VALUES ('test', 'Abomination');
-INSERT INTO deck_card(owner, name) VALUES ('test', 'Abomination');
-INSERT INTO deck_card(owner, name) VALUES ('test', 'Abomination');
-INSERT INTO deck_card(owner, name) VALUES ('test', 'Abomination');
-INSERT INTO deck_card(owner, name) VALUES ('test', 'Abomination');
-INSERT INTO deck_card(owner, name) VALUES ('test', 'Abomination');
+INSERT INTO deck VALUES ('test', 'TEST DECk', 0.0, 0, '2025-01-10 10:41');
+--INSERT INTO card VALUES ('Abomination', 5, 9);
+--INSERT INTO deck_card(owner, name) VALUES ('test', 'Abomination');
+--INSERT INTO deck_card(owner, name) VALUES ('test', 'Abomination');
+--INSERT INTO deck_card(owner, name) VALUES ('test', 'Abomination');
+--INSERT INTO deck_card(owner, name) VALUES ('test', 'Abomination');
+--INSERT INTO deck_card(owner, name) VALUES ('test', 'Abomination');
+--INSERT INTO deck_card(owner, name) VALUES ('test', 'Abomination');
+--INSERT INTO deck_card(owner, name) VALUES ('test', 'Abomination');
+--INSERT INTO deck_card(owner, name) VALUES ('test', 'Abomination');
+--INSERT INTO deck_card(owner, name) VALUES ('test', 'Abomination');

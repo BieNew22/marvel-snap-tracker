@@ -10,7 +10,7 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.util.Iterator;
 
-public class MainController {
+public class MainViewController {
 
     // 사용자 덱 정보들을 담을 컨테이너
     @FXML
@@ -32,7 +32,7 @@ public class MainController {
                 VBox childNode = loader.load();
 
                 // 현재 deck-view에 deck 정보를 넘김
-                DeckController controller = loader.getController();
+                DeckViewController controller = loader.getController();
                 controller.setDeck(deck);
 
                 deckContainer.getChildren().add(childNode);
