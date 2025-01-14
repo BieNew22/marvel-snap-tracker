@@ -1,7 +1,6 @@
 package com.example.marvelsnaptracker.contoller;
 
-import com.example.marvelsnaptracker.MainApplication;
-import com.example.marvelsnaptracker.decks.Deck;
+import com.example.marvelsnaptracker.deck.Deck;
 import com.example.marvelsnaptracker.utils.WebPToPNGConverter;
 import javafx.animation.*;
 import javafx.fxml.FXML;
@@ -9,11 +8,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.util.Duration;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class DeckController {
 
@@ -35,7 +31,7 @@ public class DeckController {
         title.setText(deck.getName());
 
         // HBox에 카드 리스트 추가하기
-        ArrayList<String> cards = deck.getCardList();
+        ArrayList<String> cards = deck.getCardNameList();
 
         // 초기 위치
         int posX = 0, posY = 0;

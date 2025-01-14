@@ -25,7 +25,7 @@
 
 /* 덱 정보 Label (games, win rate 등) */
 .deck-info-tags-label {
-    -fx-padding: 7 0 0 0;
+    -fx-padding: 10 0 0 0;
     -fx-text-fill: white;
     -fx-font-size: 14px;
     -fx-font-weight: bold;
@@ -35,7 +35,7 @@
 
 .deck-info-data-label {
     -fx-font-family: 'sans-serif';
-    -fx-padding: 0 0 5 0;
+    -fx-padding: 0 0 10 0;
     -fx-text-fill: white;
     -fx-font-size: 17px;
 }
@@ -55,6 +55,7 @@
 /* deck 제목 정보를 담은 컨테이너 */
 .title-container {
     -fx-alignment: center_left;
+    -fx-min-height: 70;
 }
 
 /* 제목 label */
