@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" maxWidth="450.0" prefHeight="200.0" styleClass="deck-container" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.marvelsnaptracker.contoller.DeckController">
+<VBox alignment="CENTER" prefWidth="470.0" prefHeight="200.0" styleClass="deck-container" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.marvelsnaptracker.contoller.DeckViewController">
 
     <stylesheets>
         <URL value="@styles/deck-view.css" />
@@ -17,9 +17,9 @@
     </VBox.margin>
 
     <HBox styleClass="title-container">
-        <Label fx:id="title" styleClass="title-label" />
+        <Label fx:id="titleLabel" styleClass="title-label" />
         <Label styleClass="deck-play-time-info-label" text="🕐 Last Played: " />
-        <Label styleClass="deck-play-time-data-label" text="2025.01.07-17:42" />
+        <Label fx:id="lastPlayLabel" styleClass="deck-play-time-data-label" text="2025.01.07-17:42" />
     </HBox>
 
     <!-- 덱 승률 명시 하는 곳 -->
@@ -30,12 +30,12 @@
                 <Insets left="10" />
             </HBox.margin>
             <Label styleClass="deck-info-tags-label" text="Win rate" />
-            <Label styleClass="deck-info-data-label" text="100.0%" />
+            <Label fx:id="winRateLabel" styleClass="deck-info-data-label" text="100.0%" />
         </VBox>
 
         <VBox styleClass="info-container">
             <Label styleClass="deck-info-tags-label" text="Games" />
-            <Label styleClass="deck-info-data-label" text="999+" />
+            <Label fx:id="totalGameLabel" styleClass="deck-info-data-label" text="999+" />
         </VBox>
 
         <Label styleClass="copy-deck-label" text="Copy Deck  🗐" fx:id="copyDeckLabel">
@@ -47,6 +47,6 @@
 
     <!-- 덱 카드 정보 보여주는 곳   -->
     <VBox styleClass="card-container">
-        <AnchorPane fx:id="cardList" maxWidth="300" />
+        <AnchorPane fx:id="cardList" />
     </VBox>
 </VBox>

@@ -48,18 +48,21 @@ public class DatabaseDriver {
      */
     private void initTable() {
         String initSqlFile = "init.sql";
-        try (Statement stmt = connection.createStatement()) {
-            // init.sql 파일 읽기
+
+        // init.sql 파일에 실행할 쿼리 읽어 오기
+        ArrayList<String> queryList = new ArrayList<>();
+        try {
             BufferedReader br = new BufferedReader(new FileReader(initSqlFile));
 
             String line;
             StringBuilder sb = new StringBuilder();
 
-            ArrayList<String> queryList = new ArrayList<>();
             while ((line = br.readLine()) != null) {
                 // init.sql 에서 주석 제거하기
-                if (!line.startsWith("--") && !line.isEmpty())
-                    sb.append(line).append("\n");
+                if (line.startsWith("--") || line.isEmpty())
+                    continue;
+
+                sb.append(line).append("\n");
 
                 // 쿼리 구분하기
                 if (line.endsWith(";")) {
@@ -67,6 +70,13 @@ public class DatabaseDriver {
                     sb = new StringBuilder();
                 }
             }
+        } catch (IOException e) {
+            System.out.println("DatabaseDriver.initTable (read init.sql) : " + e.getMessage());
+            System.exit(-1);
+        }
+
+        // init.sql 쿼리들을 실행
+        try (Statement stmt = connection.createStatement()) {
 
             // init.sql 의 모든 쿼리 추가
             for (String sql: queryList) {
@@ -75,8 +85,10 @@ public class DatabaseDriver {
 
             // 실행.
             stmt.executeBatch();
-        } catch (IOException | SQLException e) {
-            System.out.println("DatabaseDriver.initTable : " + e.getMessage());
+
+        } catch (SQLException e) {
+            System.out.println("DatabaseDriver.initTable (exe sql) : " + e.getMessage());
+            e.printStackTrace();
             System.exit(-1);
         }
     }

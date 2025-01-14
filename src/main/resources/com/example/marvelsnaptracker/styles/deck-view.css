@@ -2,6 +2,8 @@
 .deck-container {
     -fx-background-color: rgba(0, 0, 0, 0.90);
     -fx-background-radius: 15;
+    -fx-min-width: 470;
+    -fx-max-width: 470;
 }
 
 /* 덱 카드 정보를 보여주는 것 */
