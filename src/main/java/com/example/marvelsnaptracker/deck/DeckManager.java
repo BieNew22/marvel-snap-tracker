@@ -1,7 +1,8 @@
-package com.example.marvelsnaptracker.decks;
+package com.example.marvelsnaptracker.deck;
 
-import com.example.marvelsnaptracker.utils.DatabaseDriver;
+import com.example.marvelsnaptracker.utils.db.DatabaseDriver;
 import com.example.marvelsnaptracker.utils.EnvManager;
+import com.example.marvelsnaptracker.utils.db.DeckService;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Getter;
@@ -30,7 +31,7 @@ public class DeckManager {
         ArrayList<Deck> deckFromJson = initDeckJson();
 
         // DB 통하여 덱 정보를 조회
-        ArrayList<Deck> deckFromDB = DatabaseDriver.getInstance().getAllDecks();
+        ArrayList<Deck> deckFromDB = DeckService.getInstance().selectAllDecks();
 
         // DB와 Json 동기화 시키기.
 
@@ -60,16 +61,17 @@ public class DeckManager {
                 } else if (res == Deck.DECK_DIFF_CARD) {
                     // 덱 카드가 다름 -> 다른 덱으로 간주
                     DatabaseDriver.getInstance().updateDeckID(inDB.getId());
-                    DatabaseDriver.getInstance().insertDeck(deck);
+                    DeckService.getInstance().insertDeck(deck);
                 }
 
             } else {
                 // json에 있고 DB에 없는 경우 -> 새로운 덱을 생성
-                DatabaseDriver.getInstance().insertDeck(deck);
+                DeckService.getInstance().insertDeck(deck);
             }
         }
 
-        deckList = DatabaseDriver.getInstance().getAllDecks();
+        // 최종 덱 정보를 가져와서 정리
+        deckList = DeckService.getInstance().selectAllDecks();
     }
 
     /**

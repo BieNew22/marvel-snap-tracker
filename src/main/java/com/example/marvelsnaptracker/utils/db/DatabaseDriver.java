@@ -1,9 +1,9 @@
-package com.example.marvelsnaptracker.utils;
+package com.example.marvelsnaptracker.utils.db;
 
 import com.example.marvelsnaptracker.decks.Card;
 import com.example.marvelsnaptracker.decks.Deck;
+import com.example.marvelsnaptracker.utils.EnvManager;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Getter;
 
@@ -17,7 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * db 와 통신 하는 부분 관리 하는 클래스, singleton
+ * db connection 과 db 초기화 부분을 담당
+ * singleton
  */
 public class DatabaseDriver {
     @Getter
@@ -223,6 +224,10 @@ public class DatabaseDriver {
             System.out.println("DatabaseDriver.getAllDecks : " + e.getMessage());
             return new ArrayList<>();
         }
+    }
+
+    public ArrayList<Card> getDeckCards(String id) {
+
     }
 
     /**
