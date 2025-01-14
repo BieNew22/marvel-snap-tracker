@@ -10,7 +10,7 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.util.Iterator;
 
-public class MainViewController {
+public class DeckListViewController {
 
     // 사용자 덱 정보들을 담을 컨테이너
     @FXML
