@@ -1,7 +1,8 @@
 package com.example.marvelsnaptracker;
 
-import com.example.marvelsnaptracker.decks.DeckManager;
-import com.example.marvelsnaptracker.utils.DatabaseDriver;
+import com.example.marvelsnaptracker.card.CardManager;
+import com.example.marvelsnaptracker.deck.DeckManager;
+import com.example.marvelsnaptracker.utils.db.DatabaseDriver;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -25,10 +26,10 @@ public class MainApplication extends Application {
 
     public static void main(String[] args) {
 
-        // DB 초기화
+        // 0. DB 초기화
         DatabaseDriver.getInstance().initDB();
 
-        // 사용자 덱 정보 초기화하기
+        // 1. 사용자 덱 정보 초기화하기
         DeckManager.getInstance().initDeck();
 
         launch();
