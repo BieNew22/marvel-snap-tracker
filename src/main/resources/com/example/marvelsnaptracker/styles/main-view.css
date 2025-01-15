@@ -2,25 +2,43 @@
 .main-container {
     -fx-pref-width: 510;
     -fx-pref-height: 700;
-    -fx-background-image: url("file:images/background.jpg");
+    -fx-background-image: url("../images/background.jpg");
     -fx-background-position: center;
     -fx-background-size: contain;
 }
 
 /* taskbar 와 content view 둘의 세로 크기 비율 설정 */
 .taskbar-container {
-    -fx-pref-height: 70;
-    -fx-background-color: rgba(0, 0, 0, 0.9);
+    -fx-pref-height: 50;
+    -fx-alignment: center;
+    -fx-background-color: rgba(0, 0, 0, 1);
 }
 
 .content-container {
-    -fx-pref-height: 630;
+    -fx-pref-height: 650;
     -fx-background-color: transparent;
 }
 
 /* taskbar 관련 css */
+.window-button {
+    -fx-background-color: transparent;
+    -fx-background-size: 30%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-pref-width: 30;
+    -fx-pref-height: 30;
+}
+
+.window-button:hover {
+    -fx-background-color: white;
+
+    transition: -fx-background-color 0.5s ease;
+}
+
 .minimize-button {
+    -fx-background-image: url("../images/minimize.png");
 }
 
 .close-button {
+    -fx-background-image: url("../images/close.png");
 }

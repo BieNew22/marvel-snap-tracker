@@ -17,8 +17,8 @@
     <HBox styleClass="taskbar-container">
         <Button text="MAIN" />
         <Button text="DECK" />
-        <Button fx:id="minimizeButton" styleClass="minimize-button" text="-" />
-        <Button fx:id="closeButton" styleClass="close-button" text="✖" />
+        <Button fx:id="minimizeButton" styleClass="minimize-button, window-button" />
+        <Button fx:id="closeButton" styleClass="close-button, window-button" />
     </HBox>
 
     <VBox styleClass="content-container" fx:id="contentBox" spacing="10" />
