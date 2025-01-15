@@ -1,3 +1,4 @@
+/* 메인 컨테이너 */
 .main-container {
     -fx-pref-width: 510;
     -fx-pref-height: 700;
@@ -6,12 +7,20 @@
     -fx-background-size: contain;
 }
 
+/* taskbar 와 content view 둘의 세로 크기 비율 설정 */
 .taskbar-container {
     -fx-pref-height: 70;
-    -fx-background-color: transparent;
+    -fx-background-color: rgba(0, 0, 0, 0.9);
 }
 
 .content-container {
     -fx-pref-height: 630;
     -fx-background-color: transparent;
+}
+
+/* taskbar 관련 css */
+.minimize-button {
+}
+
+.close-button {
 }
