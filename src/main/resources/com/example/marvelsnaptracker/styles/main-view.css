@@ -27,18 +27,32 @@
     -fx-background-position: center;
     -fx-pref-width: 30;
     -fx-pref-height: 30;
-}
-
-.window-button:hover {
-    -fx-background-color: white;
-
-    transition: -fx-background-color 0.5s ease;
-}
-
-.minimize-button {
-    -fx-background-image: url("../images/minimize.png");
+    -fx-background-radius: 0;
 }
 
 .close-button {
     -fx-background-image: url("../images/close.png");
+}
+
+.minimize-button {
+
+    -fx-background-image: url("../images/minimize.png");
+}
+
+.window-button:hover {
+    -fx-cursor: hand;
+    -fx-background-radius: 5;
+
+    transition: -fx-background-color 0.6s ease,
+                -fx-border-radius 0.6s ease;
+}
+
+.minimize-button:hover {
+    -fx-background-color: white;
+    -fx-background-image: url("../images/minimize-reverse.png");
+}
+
+.close-button:hover {
+    -fx-background-color: red;
+    -fx-background-image: url("../images/close-reverse.png");
 }

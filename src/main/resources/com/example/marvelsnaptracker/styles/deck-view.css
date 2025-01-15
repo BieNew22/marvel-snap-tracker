@@ -2,8 +2,11 @@
 .deck-container {
     -fx-background-color: rgba(0, 0, 0, 0.90);
     -fx-background-radius: 15;
-    -fx-min-width: 470;
-    -fx-max-width: 470;
+    -fx-min-width: 465;
+    -fx-max-width: 465;
+    -fx-alignment: center;
+    -fx-pref-width: 465;
+    -fx-pref-height: 200;
 }
 
 /* 덱 카드 정보를 보여주는 것 */
@@ -52,6 +55,10 @@
     -fx-border-radius: 5;
     -fx-background-radius: 5;
     -fx-alignment: center;
+}
+
+.copy-deck-label:hover {
+    -fx-cursor: hand;
 }
 
 /* deck 제목 정보를 담은 컨테이너 */

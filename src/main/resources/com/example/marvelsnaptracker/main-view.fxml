@@ -7,11 +7,8 @@
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.marvelsnaptracker.contoller.MainViewController"
+      stylesheets="@styles/main-view.css"
       styleClass="main-container">
-
-    <stylesheets>
-        <URL value="@styles/main-view.css" />
-    </stylesheets>
 
     <!-- taskbar   -->
     <HBox styleClass="taskbar-container">

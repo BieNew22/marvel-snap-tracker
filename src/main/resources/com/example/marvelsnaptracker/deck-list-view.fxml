@@ -4,12 +4,11 @@
 <?import javafx.scene.layout.*?>
 
 <?import java.net.URL?>
-<ScrollPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.example.marvelsnaptracker.contoller.DeckListViewController"
+<ScrollPane xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx/17.0.2-ea"
+            fx:controller="com.example.marvelsnaptracker.contoller.DeckListViewController"
+            stylesheets="@styles/deck-list-view.css"
             styleClass="deck-view-container" fitToWidth="true">
-
-  <stylesheets>
-    <URL value="@styles/deck-list-view.css" />
-  </stylesheets>
 
   <VBox fx:id="deckContainer" alignment="CENTER" />
 
