@@ -35,9 +35,10 @@ public class DeckViewController {
 
     /**
      * deck-view 에서 초기 뷰 설정
+     *
      * @param deck deck-view에 보여질 deck
      */
-    public void setDeck(Deck deck) {
+    public void initDeckView(Deck deck) {
         // deck 이름 설정하기
         titleLabel.setText(deck.getName().toUpperCase(Locale.ROOT));
 
@@ -66,10 +67,8 @@ public class DeckViewController {
 
             String cardPath;
             if (res) {
-//                cardPath = System.getProperty("user.dir") + "\\images\\" + name + ".png";
                 cardPath = "file:images/" + name + ".png";
             } else {
-//                cardPath = System.getProperty("user.dir") + "\\images\\Hulk.png";
                 cardPath = "file:images/Hulk.png";
             }
 
@@ -121,6 +120,7 @@ public class DeckViewController {
 
     /**
      * copy deck label 의 백경색 애니메이션
+     *
      * @param formatString copy deck label 의 기본 배경 format
      * @param fromPercent 시작 퍼센트
      * @param toPercent 종료 퍼센트

@@ -33,7 +33,7 @@ public class DeckListViewController {
 
                 // 현재 deck-view에 deck 정보를 넘김
                 DeckViewController controller = loader.getController();
-                controller.setDeck(deck);
+                controller.initDeckView(deck);
 
                 deckContainer.getChildren().add(childNode);
             }
