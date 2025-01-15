@@ -24,7 +24,6 @@ target/
 .autocp
 
 images/*
-!images/background.jpg
 
 ### NetBeans ###
 /nbproject/private/

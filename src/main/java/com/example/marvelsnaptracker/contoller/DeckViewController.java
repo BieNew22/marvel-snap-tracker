@@ -66,12 +66,14 @@ public class DeckViewController {
 
             String cardPath;
             if (res) {
-                cardPath = System.getProperty("user.dir") + "\\images\\" + name + ".png";
+//                cardPath = System.getProperty("user.dir") + "\\images\\" + name + ".png";
+                cardPath = "file:images/" + name + ".png";
             } else {
-                cardPath = System.getProperty("user.dir") + "\\images\\Hulk.png";
+//                cardPath = System.getProperty("user.dir") + "\\images\\Hulk.png";
+                cardPath = "file:images/Hulk.png";
             }
 
-            Image image = new Image(cardPath);
+            Image image = new Image(cardPath);;
 
             // ImageView에 이미지 설정
             ImageView imageView = new ImageView(image);
