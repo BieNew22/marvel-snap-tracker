@@ -14,8 +14,8 @@ module com.example.marvelsnaptracker {
 
     opens com.example.marvelsnaptracker to javafx.fxml;
     exports com.example.marvelsnaptracker;
-    exports com.example.marvelsnaptracker.contoller;
+    exports com.example.marvelsnaptracker.controller;
     exports com.example.marvelsnaptracker.deck to com.fasterxml.jackson.databind;
-    opens com.example.marvelsnaptracker.contoller to javafx.fxml;
+    opens com.example.marvelsnaptracker.controller to javafx.fxml;
     exports com.example.marvelsnaptracker.card to com.fasterxml.jackson.databind;
 }

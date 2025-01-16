@@ -1,4 +1,4 @@
-package com.example.marvelsnaptracker.contoller;
+package com.example.marvelsnaptracker.controller;
 
 import com.example.marvelsnaptracker.MainApplication;
 import javafx.fxml.FXML;

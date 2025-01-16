@@ -1,4 +1,4 @@
-package com.example.marvelsnaptracker.contoller;
+package com.example.marvelsnaptracker.controller;
 
 import com.example.marvelsnaptracker.deck.Deck;
 import com.example.marvelsnaptracker.utils.WebPToPNGConverter;

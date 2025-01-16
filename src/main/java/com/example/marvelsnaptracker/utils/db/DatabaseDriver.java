@@ -40,7 +40,8 @@ public class DatabaseDriver {
      */
     public void initDB() {
         initTable();
-        initCardsData();
+        // TODO: 나중에 배포시 주석 해제, init.sql 에서도 주석 처리 해제하기
+        // initCardsData();
     }
 
     /**
@@ -101,8 +102,6 @@ public class DatabaseDriver {
             // 연결 설정
             HttpURLConnection httpConnection =
                     (HttpURLConnection) new URL(EnvManager.getInstance().CARD_DATA_URL).openConnection();
-
-            System.out.println(EnvManager.getInstance().CARD_DATA_URL);
 
             httpConnection.setRequestMethod("GET");
             httpConnection.setRequestProperty("Accept", "application/json");

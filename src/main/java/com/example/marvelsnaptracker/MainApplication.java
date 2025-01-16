@@ -1,7 +1,6 @@
 package com.example.marvelsnaptracker;
 
-import com.example.marvelsnaptracker.card.CardManager;
-import com.example.marvelsnaptracker.contoller.MainViewController;
+import com.example.marvelsnaptracker.controller.MainViewController;
 import com.example.marvelsnaptracker.deck.DeckManager;
 import com.example.marvelsnaptracker.utils.db.DatabaseDriver;
 import javafx.application.Application;
