@@ -9,17 +9,21 @@
 
 /* taskbar 와 content view 둘의 세로 크기 비율 설정 */
 .taskbar-container {
-    -fx-pref-height: 50;
+    -fx-pref-height: 60;
+    -fx-min-height: 60;
+    -fx-max-height: 60;
     -fx-alignment: center;
     -fx-background-color: rgba(0, 0, 0, 1);
 }
 
 .content-container {
-    -fx-pref-height: 650;
+    -fx-pref-height: 640;
     -fx-background-color: transparent;
 }
 
-/* taskbar 관련 css */
+/* taskbar 최소화, 닫기 버튼 관련 css */
+
+/* 두 버튼의 공동 부분 */
 .window-button {
     -fx-background-color: transparent;
     -fx-background-size: 30%;
@@ -30,21 +34,25 @@
     -fx-background-radius: 0;
 }
 
+.window-button:hover {
+    -fx-cursor: hand;
+    -fx-background-radius: 10;
+
+    transition: -fx-background-radius 0.5s ease;
+}
+
+/* 각 버튼의 CSS */
 .close-button {
     -fx-background-image: url("../images/close.png");
 }
 
-.minimize-button {
-
-    -fx-background-image: url("../images/minimize.png");
+.close-button:hover {
+    -fx-background-color: red;
+    -fx-background-image: url("../images/close-reverse.png");
 }
 
-.window-button:hover {
-    -fx-cursor: hand;
-    -fx-background-radius: 5;
-
-    transition: -fx-background-color 0.6s ease,
-                -fx-border-radius 0.6s ease;
+.minimize-button {
+    -fx-background-image: url("../images/minimize.png");
 }
 
 .minimize-button:hover {
@@ -52,7 +60,4 @@
     -fx-background-image: url("../images/minimize-reverse.png");
 }
 
-.close-button:hover {
-    -fx-background-color: red;
-    -fx-background-image: url("../images/close-reverse.png");
-}
+/* taskbar 화면 전환 관련 버튼 css */

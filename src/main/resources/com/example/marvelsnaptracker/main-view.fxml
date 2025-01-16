@@ -4,6 +4,7 @@
 <?import javafx.scene.layout.*?>
 
 <?import java.net.URL?>
+<?import javafx.geometry.Insets?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.marvelsnaptracker.contoller.MainViewController"
@@ -11,12 +12,33 @@
       styleClass="main-container">
 
     <!-- taskbar   -->
-    <HBox styleClass="taskbar-container">
-        <Button text="MAIN" />
-        <Button text="DECK" />
-        <Button fx:id="minimizeButton" styleClass="minimize-button, window-button" />
-        <Button fx:id="closeButton" styleClass="close-button, window-button" />
-    </HBox>
+    <BorderPane styleClass="taskbar-container">
+        <!-- 화면 전환용 버튼 모음 -->
+        <left>
+            <HBox BorderPane.alignment="CENTER" alignment="CENTER">
+                <Button text="MAIN" />
+                <Button text="DECK" />
+                <Button text="TBC" />
+            </HBox>
+        </left>
+
+        <!-- 창 컨트롤하는 버튼 모은 -->
+        <right>
+            <HBox BorderPane.alignment="CENTER" alignment="CENTER">
+                <Button fx:id="minimizeButton" styleClass="minimize-button, window-button">
+                    <HBox.margin>
+                        <Insets right="10" />
+                    </HBox.margin>
+                </Button>
+                <Button fx:id="closeButton" styleClass="close-button, window-button">
+                    <HBox.margin>
+                        <Insets right="10" />
+                    </HBox.margin>
+                </Button>
+            </HBox>
+        </right>
+
+    </BorderPane>
 
     <VBox styleClass="content-container" fx:id="contentBox" spacing="10" />
 </VBox>

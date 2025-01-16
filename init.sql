@@ -32,7 +32,8 @@ CREATE TABLE IF NOT EXISTS deck_card (
     FOREIGN KEY (name) REFERENCES card(name) ON UPDATE CASCADE
 );
 
-INSERT INTO deck VALUES ('test', 'TEST DECk', 0.0, 0, '2025-01-10 10:41');
+INSERT INTO deck VALUES ('test1', 'TEST DECk', 0.0, 0, '2025-01-10 10:41');
+INSERT INTO deck VALUES ('test2', '한글 테스트', 0.0, 0, '2025-01-16 11:08');
 --INSERT INTO card VALUES ('Abomination', 5, 9);
 --INSERT INTO deck_card(owner, name) VALUES ('test', 'Abomination');
 --INSERT INTO deck_card(owner, name) VALUES ('test', 'Abomination');
