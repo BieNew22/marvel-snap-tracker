@@ -40,7 +40,7 @@
 
 .deck-info-data-label {
     -fx-font-family: 'sans-serif';
-    -fx-padding: 0 0 10 0;
+    -fx-padding: 3 0 10 0;
     -fx-text-fill: white;
     -fx-font-size: 17px;
 }
