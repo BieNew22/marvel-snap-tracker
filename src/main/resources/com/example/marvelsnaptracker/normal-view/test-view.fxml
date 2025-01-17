@@ -11,5 +11,5 @@
             fx:controller="com.example.marvelsnaptracker.controller.normal.TestViewController"
             stylesheets="@../styles/test-view.css" >
 
-    <Label text="NONE" styleClass="test-label" />
+    <Label text="THIS IS TEST VIEW" styleClass="test-label" />
 </VBox>

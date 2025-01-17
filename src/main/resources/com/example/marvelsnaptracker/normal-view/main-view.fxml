@@ -9,9 +9,8 @@
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.marvelsnaptracker.controller.normal.MainViewController"
-      stylesheets="../styles/normal-main-view.css"
->
+      stylesheets="@../styles/normal-main-view.css" >
 
-    <Label text="HELLO WORLD!!" styleClass="test-label" />
+    <Label text="HELLO WORLD!!" styleClass="normal-main-label" />
 
 </VBox>

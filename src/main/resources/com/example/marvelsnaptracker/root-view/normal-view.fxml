@@ -6,7 +6,7 @@
 <?import javafx.geometry.Insets?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.marvelsnaptracker.controller.normal.RootViewController"
+      fx:controller="com.example.marvelsnaptracker.controller.normal.NormalViewController"
       stylesheets="@../styles/normal-view.css"
       styleClass="main-container">
 
@@ -21,15 +21,17 @@
                     <HBox.margin>
                         <Insets left="15" />
                     </HBox.margin>
-                    <Button fx:id="mainButton" text="MAIN" styleClass="swap-button, now-active" />
-                    <Label fx:id="mainLabel" styleClass="under-line, under-line-active" />
+                    <Button fx:id="mainButton" text="MAIN" styleClass="swap-button"
+                            onAction="#clickWindowChangeButton" />
+                    <Label fx:id="mainLabel" styleClass="under-line" />
                 </VBox>
 
                 <Label text="|" styleClass="split-line"/>
 
                 <!-- 덱 화면 전환 버튼 컨테이너  -->
                 <VBox alignment="CENTER">
-                    <Button fx:id="deckButton" text="DECK" styleClass="swap-button" />
+                    <Button fx:id="deckButton" text="DECK" styleClass="swap-button"
+                            onAction="#clickWindowChangeButton" />
                     <Label fx:id="deckLabel" styleClass="under-line" />
                 </VBox>
 
@@ -37,7 +39,8 @@
 
                 <!-- 덱 화면 전환 버튼 컨테이너  -->
                 <VBox alignment="CENTER">
-                    <Button fx:id="testButton" text="TEST" styleClass="swap-button" />
+                    <Button fx:id="testButton" text="TEST" styleClass="swap-button"
+                            onAction="#clickWindowChangeButton" />
                     <Label fx:id="testLabel" styleClass="under-line" />
                 </VBox>
 
