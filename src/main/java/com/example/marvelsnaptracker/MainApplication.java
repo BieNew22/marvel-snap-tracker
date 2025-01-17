@@ -1,6 +1,6 @@
 package com.example.marvelsnaptracker;
 
-import com.example.marvelsnaptracker.controller.normal.RootViewController;
+import com.example.marvelsnaptracker.controller.normal.NormalViewController;
 import com.example.marvelsnaptracker.deck.DeckManager;
 import com.example.marvelsnaptracker.utils.db.DatabaseDriver;
 import javafx.application.Application;
@@ -24,7 +24,7 @@ public class MainApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 510, 700);
 
         // 컨트롤러에 인스턴스 전달
-        RootViewController controller = fxmlLoader.getController();
+        NormalViewController controller = fxmlLoader.getController();
         controller.setPrimaryStage(stage);
 
         // 드래그를 통하여 창 이동 이벤트 추가
