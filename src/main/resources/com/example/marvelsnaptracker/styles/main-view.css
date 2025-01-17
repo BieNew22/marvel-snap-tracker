@@ -1,11 +1,115 @@
+/* 메인 컨테이너 */
 .main-container {
     -fx-pref-width: 510;
     -fx-pref-height: 700;
-    -fx-background-color: black;
-}
-
-.main-container > .viewport {
-    -fx-background-image: url("file:images/background.jpg");
+    -fx-background-image: url("../images/background.jpg");
     -fx-background-position: center;
     -fx-background-size: contain;
 }
+
+/* taskbar 와 content view 둘의 세로 크기 비율 설정 */
+.taskbar-container {
+    -fx-pref-height: 60;
+    -fx-min-height: 60;
+    -fx-max-height: 60;
+    -fx-alignment: center;
+    -fx-background-color: rgba(0, 0, 0, 1);
+}
+
+.content-container {
+    -fx-pref-height: 640;
+    -fx-background-color: transparent;
+}
+
+/* taskbar 최소화, 닫기 버튼 관련 css */
+
+/* 두 버튼의 공동 부분 */
+.window-button {
+    -fx-background-color: transparent;
+    -fx-background-size: 30%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-pref-width: 30;
+    -fx-pref-height: 30;
+    -fx-background-radius: 0;
+}
+
+.window-button:hover {
+    -fx-cursor: hand;
+    -fx-background-radius: 10;
+
+    transition: -fx-background-radius 0.5s ease;
+}
+
+/* 각 버튼의 CSS */
+.close-button {
+    -fx-background-image: url("../images/close.png");
+}
+
+.close-button:hover {
+    -fx-background-color: red;
+    -fx-background-image: url("../images/close-reverse.png");
+}
+
+.minimize-button {
+    -fx-background-image: url("../images/minimize.png");
+}
+
+.minimize-button:hover {
+    -fx-background-color: white;
+    -fx-background-image: url("../images/minimize-reverse.png");
+}
+
+/* taskbar 화면 전환 관련 버튼 css */
+
+/* 화면 전환 버튼 구분선 */
+.split-line {
+    -fx-font-size: 15;
+    -fx-text-fill: #adb5bd;
+    -fx-padding: 0 5 2 5;
+}
+
+/* 화면 전환 번튼 */
+.swap-button {
+    -fx-pref-width: 75;
+    -fx-pref-height: 25;
+    -fx-background-color: transparent;
+
+    -fx-font-family: 'sans-serif';
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+
+    -fx-border-color: transparent;
+    -fx-border-radius: 4;
+    -fx-border-width: 1;
+    -fx-border-insets: 0;
+}
+
+.swap-button:hover {
+    -fx-cursor: hand;
+
+    -fx-background-color: rgba(99, 33, 163, 0.90);
+
+    transition: all 0.5s ease;
+}
+
+.under-line {
+    -fx-pref-height: 1;
+    -fx-pref-width: 0;
+    -fx-font-size: 1;
+    -fx-border-color: white;
+    -fx-border-width: 1 0 0 0;
+    -fx-padding: -1 0 0 0;
+}
+
+/* 현재 활성화된 화면전환 버튼에 대한 CSS */
+.now-active {
+    -fx-background-color: rgba(99, 33, 163, 0.90);
+    /*-fx-border-color: white;*/
+}
+
+.under-line-active {
+    -fx-pref-width: 75;
+}
+

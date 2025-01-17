@@ -1,0 +1,12 @@
+/* deck-list-view 배경 제거 */
+.deck-view-container {
+    -fx-background-color: transparent;
+}
+.deck-view-container > .viewport {
+    -fx-background-color: transparent;
+}
+
+/* 스크롤바의 배경 제거 */
+.deck-view-container .scroll-bar:vertical {
+    -fx-background-color: transparent;
+}

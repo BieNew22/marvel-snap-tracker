@@ -1,4 +1,4 @@
-package com.example.marvelsnaptracker.contoller;
+package com.example.marvelsnaptracker.controller;
 
 import com.example.marvelsnaptracker.deck.Deck;
 import com.example.marvelsnaptracker.utils.WebPToPNGConverter;
@@ -10,25 +10,46 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
-public class DeckController {
+public class DeckViewController {
 
     @FXML
-    private Label title;
+    private Label titleLabel;
+
+    @FXML
+    private Label lastPlayLabel;
+
+    @FXML
+    private Label winRateLabel;
+
+    @FXML
+    private Label totalGameLabel;
 
     // 각 줄에는 6개의 카드를 보여줌.
     @FXML
     private AnchorPane cardList;
 
-    @FXML Label copyDeckLabel;
+    @FXML
+    private Label copyDeckLabel;
 
     /**
      * deck-view 에서 초기 뷰 설정
+     *
      * @param deck deck-view에 보여질 deck
      */
-    public void setDeck(Deck deck) {
-        // deck 이름 가져오기
-        title.setText(deck.getName());
+    public void initDeckView(Deck deck) {
+        // deck 이름 설정하기
+        titleLabel.setText(deck.getName().toUpperCase(Locale.ROOT));
+
+        // deck 최종 플레이 일지 설정하기
+        lastPlayLabel.setText(deck.getLastPlay());
+
+        // deck 승률 설정하기
+        winRateLabel.setText(String.format("%.1f%%", deck.getWinRate()));
+
+        // deck 총 게임 수 설정하기
+        totalGameLabel.setText(deck.getPlayCount() > 999 ? "999+" : String.valueOf(deck.getPlayCount()));
 
         // HBox에 카드 리스트 추가하기
         ArrayList<String> cards = deck.getCardNameList();
@@ -46,12 +67,12 @@ public class DeckController {
 
             String cardPath;
             if (res) {
-                cardPath = System.getProperty("user.dir") + "\\images\\" + name + ".png";
+                cardPath = "file:images/" + name + ".png";
             } else {
-                cardPath = System.getProperty("user.dir") + "\\images\\Hulk.png";
+                cardPath = "file:images/Hulk.png";
             }
 
-            Image image = new Image(cardPath);
+            Image image = new Image(cardPath);;
 
             // ImageView에 이미지 설정
             ImageView imageView = new ImageView(image);
@@ -84,7 +105,7 @@ public class DeckController {
     private void setCopyDeckLabelEvent() {
         String formatCSS = "-fx-background-color:" +
                 "linear-gradient(from 0%% 0%% to 100%% 100%%, " +
-                "rgba(99, 33, 163, 0.70) %.2f%%, rgba(99, 33, 163, 0.5) 50%%);";
+                "rgba(99, 33, 163, 0.90) %.2f%%, rgba(99, 33, 163, 0.50) 50%%);";
 
         double basicPos = 75.0;
         double hoverPos = 0.0;
@@ -99,6 +120,7 @@ public class DeckController {
 
     /**
      * copy deck label 의 백경색 애니메이션
+     *
      * @param formatString copy deck label 의 기본 배경 format
      * @param fromPercent 시작 퍼센트
      * @param toPercent 종료 퍼센트
