@@ -64,8 +64,9 @@
 
 /* 화면 전환 버튼 구분선 */
 .split-line {
+    -fx-font-size: 15;
     -fx-text-fill: #adb5bd;
-    -fx-padding: 0 5 0 5;
+    -fx-padding: 0 5 2 5;
 }
 
 /* 화면 전환 번튼 */
@@ -87,21 +88,28 @@
 
 .swap-button:hover {
     -fx-cursor: hand;
+
+    -fx-background-color: rgba(99, 33, 163, 0.90);
+
+    transition: all 0.5s ease;
 }
 
+.under-line {
+    -fx-pref-height: 1;
+    -fx-pref-width: 0;
+    -fx-font-size: 1;
+    -fx-border-color: white;
+    -fx-border-width: 1 0 0 0;
+    -fx-padding: -1 0 0 0;
+}
+
+/* 현재 활성화된 화면전환 버튼에 대한 CSS */
 .now-active {
     -fx-background-color: rgba(99, 33, 163, 0.90);
     /*-fx-border-color: white;*/
 }
 
-.button-under-line {
-    -fx-pref-height: 1;
-    -fx-pref-width: 1;
+.under-line-active {
+    -fx-pref-width: 75;
 }
 
-.swap-button-container:hover .button-under-line {
-    -fx-pref-width: 100%;
-    -fx-background-color: white;
-
-    transition: all 0.5s ease;
-}

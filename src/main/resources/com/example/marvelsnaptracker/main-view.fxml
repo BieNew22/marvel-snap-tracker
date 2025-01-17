@@ -16,21 +16,31 @@
         <left>
             <HBox BorderPane.alignment="CENTER" alignment="CENTER">
 
-                <VBox styleClass="swap-button-container" alignment="CENTER">
+                <!-- 메인 화면 전환 버튼 컨테이너 -->
+                <VBox alignment="CENTER">
                     <HBox.margin>
                         <Insets left="15" />
                     </HBox.margin>
-                    <Button text="MAIN" styleClass="swap-button, now-active" />
-                    <VBox styleClass="button-under-line" />
+                    <Button fx:id="mainButton" text="MAIN" styleClass="swap-button, now-active" />
+                    <Label fx:id="mainLabel" styleClass="under-line, under-line-active" />
                 </VBox>
 
                 <Label text="|" styleClass="split-line"/>
 
-                <Button text="DECK" styleClass="swap-button" />
+                <!-- 덱 화면 전환 버튼 컨테이너  -->
+                <VBox alignment="CENTER">
+                    <Button fx:id="deckButton" text="DECK" styleClass="swap-button" />
+                    <Label fx:id="deckLabel" styleClass="under-line" />
+                </VBox>
 
                 <Label text="|" styleClass="split-line"/>
 
-                <Button text="TBC"  styleClass="swap-button" />
+                <!-- 덱 화면 전환 버튼 컨테이너  -->
+                <VBox alignment="CENTER">
+                    <Button fx:id="tbcButton" text="TBC" styleClass="swap-button" />
+                    <Label fx:id="tbcLabel" styleClass="under-line" />
+                </VBox>
+
             </HBox>
         </left>
 
