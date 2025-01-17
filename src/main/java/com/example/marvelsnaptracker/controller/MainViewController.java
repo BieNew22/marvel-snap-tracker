@@ -18,21 +18,20 @@ import java.io.IOException;
 
 public class MainViewController {
 
-    @FXML
-    private VBox contentBox;
+    @FXML private VBox contentBox;
 
-    @FXML
-    private Button minimizeButton;
+    @FXML private Button minimizeButton;
 
-    @FXML
-    private Button closeButton;
+    @FXML private Button closeButton;
 
     // 화면 전환용 관련 button 하단 hover 적용할 vbox
     @FXML private Button mainButton;
     @FXML private Label mainLabel;
+    private VBox mainWindow;
 
     @FXML private Button deckButton;
     @FXML private Label deckLabel;
+    private VBox deckWindow;
 
     // 기능을 정했지만 이름은 미정
     @FXML private Button tbcButton;
@@ -71,11 +70,24 @@ public class MainViewController {
         windowChangeButtonOnClick(tbcButton, tbcLabel);
 
         // 시작 화면 로드 : 현재는 deck-list-view.fxml
-        try {
-            FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("deck-list-view.fxml"));
-            ScrollPane screen = loader.load();
+        loadAllScreen();
 
-            contentBox.getChildren().setAll(screen);
+        contentBox.getChildren().setAll(mainWindow);
+    }
+
+    /**
+     * 모든 view를 미리 로드 함.
+     */
+    private void loadAllScreen() {
+        FXMLLoader loader;
+        try {
+            loader = new FXMLLoader(MainApplication.class.getResource("deck-list-view.fxml"));
+            deckWindow = loader.load();
+
+            // TODO : 임시 메인 화면
+            loader = new FXMLLoader(MainApplication.class.getResource("battle-view.fxml"));
+            mainWindow = loader.load();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -137,9 +149,6 @@ public class MainViewController {
     @FXML
     private void windowChangeButtonOnClick(Button button, Label label) {
         
-        String buttonActive = BUTTON_ACTIVE;
-        String labelActive = LABEL_ACTIVE;
-        
         button.setOnAction(event -> {
             // 1. 현재 display 중인 화면 관련 버튼인 경우 아무 것도 동작 X
             if (button.getStyleClass().contains(BUTTON_ACTIVE)){
@@ -159,6 +168,18 @@ public class MainViewController {
             // 3. 현재 클릭한 버튼에 active 주기
             button.getStyleClass().add(BUTTON_ACTIVE);
             label.getStyleClass().add(LABEL_ACTIVE);
+
+            // 4. 화면 전환 하기.
+            switch (button.getText().toLowerCase()) {
+                case "deck":
+                    contentBox.getChildren().setAll(deckWindow);
+                    break;
+                case "main":
+                    contentBox.getChildren().setAll(mainWindow);
+                    break;
+                default:
+                    break;
+            }
         });
     }
 }
