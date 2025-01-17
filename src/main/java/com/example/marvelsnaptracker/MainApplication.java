@@ -19,7 +19,8 @@ public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         // FXML 파일 로드
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("root-view/normal-view.fxml"));
+        String fileName = "root-view/normal-view.fxml";
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(fileName));
         Scene scene = new Scene(fxmlLoader.load(), 510, 700);
 
         // 컨트롤러에 인스턴스 전달

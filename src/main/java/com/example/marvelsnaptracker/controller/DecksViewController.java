@@ -28,7 +28,8 @@ public class DecksViewController {
                 Deck deck = decks.next();
 
                 // deck-view 를 로드 함.
-                FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("deck-info-view.fxml"));
+                String deckInfoView = "util-view/deck-info-view.fxml";
+                FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource(deckInfoView));
                 VBox childNode = loader.load();
 
                 // 현재 deck-view에 deck 정보를 넘김

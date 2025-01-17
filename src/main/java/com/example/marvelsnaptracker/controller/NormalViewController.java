@@ -80,11 +80,13 @@ public class NormalViewController {
     private void loadAllScreen() {
         FXMLLoader loader;
         try {
-            loader = new FXMLLoader(MainApplication.class.getResource("decks-view.fxml"));
+            String deckFile = "normal-view/decks-view.fxml";
+            loader = new FXMLLoader(MainApplication.class.getResource(deckFile));
             deckWindow = loader.load();
 
             // TODO : 임시 메인 화면
-            loader = new FXMLLoader(MainApplication.class.getResource("test-view.fxml"));
+            String mainFile = "normal-view/test-view.fxml";
+            loader = new FXMLLoader(MainApplication.class.getResource(mainFile));
             mainWindow = loader.load();
 
         } catch (IOException e) {
