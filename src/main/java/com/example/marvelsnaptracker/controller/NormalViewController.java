@@ -8,7 +8,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -16,7 +15,7 @@ import lombok.Setter;
 
 import java.io.IOException;
 
-public class MainViewController {
+public class NormalViewController {
 
     @FXML private VBox contentBox;
 
@@ -69,7 +68,7 @@ public class MainViewController {
         windowChangeButtonCSS(tbcButton, tbcLabel);
         windowChangeButtonOnClick(tbcButton, tbcLabel);
 
-        // 시작 화면 로드 : 현재는 deck-list-view.fxml
+        // 시작 화면 로드 : 현재는 decks-view.fxml
         loadAllScreen();
 
         contentBox.getChildren().setAll(mainWindow);
@@ -81,11 +80,11 @@ public class MainViewController {
     private void loadAllScreen() {
         FXMLLoader loader;
         try {
-            loader = new FXMLLoader(MainApplication.class.getResource("deck-list-view.fxml"));
+            loader = new FXMLLoader(MainApplication.class.getResource("decks-view.fxml"));
             deckWindow = loader.load();
 
             // TODO : 임시 메인 화면
-            loader = new FXMLLoader(MainApplication.class.getResource("battle-view.fxml"));
+            loader = new FXMLLoader(MainApplication.class.getResource("test-view.fxml"));
             mainWindow = loader.load();
 
         } catch (IOException e) {

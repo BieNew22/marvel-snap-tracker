@@ -6,8 +6,8 @@
 <?import javafx.geometry.Insets?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.marvelsnaptracker.controller.MainViewController"
-      stylesheets="@styles/main-view.css"
+      fx:controller="com.example.marvelsnaptracker.controller.NormalViewController"
+      stylesheets="@../styles/normal-view.css"
       styleClass="main-container">
 
     <!-- taskbar   -->

@@ -1,6 +1,6 @@
 package com.example.marvelsnaptracker;
 
-import com.example.marvelsnaptracker.controller.MainViewController;
+import com.example.marvelsnaptracker.controller.NormalViewController;
 import com.example.marvelsnaptracker.deck.DeckManager;
 import com.example.marvelsnaptracker.utils.db.DatabaseDriver;
 import javafx.application.Application;
@@ -19,11 +19,11 @@ public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         // FXML 파일 로드
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("main-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("root-view/normal-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 510, 700);
 
         // 컨트롤러에 인스턴스 전달
-        MainViewController controller = fxmlLoader.getController();
+        NormalViewController controller = fxmlLoader.getController();
         controller.setPrimaryStage(stage);
 
         // 드래그를 통하여 창 이동 이벤트 추가

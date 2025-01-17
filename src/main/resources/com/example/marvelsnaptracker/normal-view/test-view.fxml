@@ -8,8 +8,8 @@
 
 <VBox xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.marvelsnaptracker.controller.BattleViewController"
-            stylesheets="@styles/battle-view.css"
+            fx:controller="com.example.marvelsnaptracker.controller.TestViewController"
+            stylesheets="@../styles/test-view.css"
             styleClass="battle-view-container" >
 
     <Label text="NONE" />

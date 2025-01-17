@@ -12,7 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class DeckViewController {
+public class DeckInfoViewController {
 
     @FXML
     private Label titleLabel;
