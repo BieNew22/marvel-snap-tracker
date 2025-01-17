@@ -1,6 +1,7 @@
-package com.example.marvelsnaptracker.controller;
+package com.example.marvelsnaptracker.controller.normal;
 
 import com.example.marvelsnaptracker.MainApplication;
+import com.example.marvelsnaptracker.controller.DeckInfoViewController;
 import com.example.marvelsnaptracker.deck.Deck;
 import com.example.marvelsnaptracker.deck.DeckManager;
 import javafx.fxml.FXML;

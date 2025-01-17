@@ -6,7 +6,7 @@
 <?import javafx.geometry.Insets?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.marvelsnaptracker.controller.NormalViewController"
+      fx:controller="com.example.marvelsnaptracker.controller.normal.RootViewController"
       stylesheets="@../styles/normal-view.css"
       styleClass="main-container">
 
@@ -37,8 +37,8 @@
 
                 <!-- 덱 화면 전환 버튼 컨테이너  -->
                 <VBox alignment="CENTER">
-                    <Button fx:id="tbcButton" text="TBC" styleClass="swap-button" />
-                    <Label fx:id="tbcLabel" styleClass="under-line" />
+                    <Button fx:id="testButton" text="TEST" styleClass="swap-button" />
+                    <Label fx:id="testLabel" styleClass="under-line" />
                 </VBox>
 
             </HBox>

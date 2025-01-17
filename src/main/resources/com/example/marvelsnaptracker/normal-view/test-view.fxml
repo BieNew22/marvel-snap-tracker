@@ -8,7 +8,7 @@
 
 <VBox xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.marvelsnaptracker.controller.TestViewController"
+            fx:controller="com.example.marvelsnaptracker.controller.normal.TestViewController"
             stylesheets="@../styles/test-view.css" >
 
     <Label text="NONE" styleClass="test-label" />

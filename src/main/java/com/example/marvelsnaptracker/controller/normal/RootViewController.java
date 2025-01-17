@@ -1,4 +1,4 @@
-package com.example.marvelsnaptracker.controller;
+package com.example.marvelsnaptracker.controller.normal;
 
 import com.example.marvelsnaptracker.MainApplication;
 import javafx.animation.KeyFrame;
@@ -15,7 +15,7 @@ import lombok.Setter;
 
 import java.io.IOException;
 
-public class NormalViewController {
+public class RootViewController {
 
     @FXML private VBox contentBox;
 
@@ -33,8 +33,8 @@ public class NormalViewController {
     private VBox deckWindow;
 
     // 기능을 정했지만 이름은 미정
-    @FXML private Button tbcButton;
-    @FXML private Label tbcLabel;
+    @FXML private Button testButton;
+    @FXML private Label testLabel;
     
     // 현재 활성화된 화면에 관련된 Button 및 Label 추가할 class
     private final String BUTTON_ACTIVE = "now-active";
@@ -65,8 +65,8 @@ public class NormalViewController {
         windowChangeButtonCSS(deckButton, deckLabel);
         windowChangeButtonOnClick(deckButton, deckLabel);
 
-        windowChangeButtonCSS(tbcButton, tbcLabel);
-        windowChangeButtonOnClick(tbcButton, tbcLabel);
+        windowChangeButtonCSS(testButton, testLabel);
+        windowChangeButtonOnClick(testButton, testLabel);
 
         // 시작 화면 로드 : 현재는 decks-view.fxml
         loadAllScreen();
@@ -80,6 +80,9 @@ public class NormalViewController {
     private void loadAllScreen() {
         FXMLLoader loader;
         try {
+            // 메인 뷰 로딩
+//            String mainFile = "normal-view/main-view.fxml";
+
             String deckFile = "normal-view/decks-view.fxml";
             loader = new FXMLLoader(MainApplication.class.getResource(deckFile));
             deckWindow = loader.load();
@@ -163,8 +166,8 @@ public class NormalViewController {
             deckButton.getStyleClass().remove(BUTTON_ACTIVE);
             deckLabel.getStyleClass().remove(LABEL_ACTIVE);
             
-            tbcButton.getStyleClass().remove(BUTTON_ACTIVE);
-            tbcLabel.getStyleClass().remove(LABEL_ACTIVE);
+            testButton.getStyleClass().remove(BUTTON_ACTIVE);
+            testLabel.getStyleClass().remove(LABEL_ACTIVE);
             
             // 3. 현재 클릭한 버튼에 active 주기
             button.getStyleClass().add(BUTTON_ACTIVE);
