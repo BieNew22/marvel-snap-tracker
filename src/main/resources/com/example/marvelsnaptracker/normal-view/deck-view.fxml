@@ -5,8 +5,8 @@
 
 <VBox xmlns:fx="http://javafx.com/fxml/1"
             xmlns="http://javafx.com/javafx/17.0.2-ea"
-            fx:controller="com.example.marvelsnaptracker.controller.DeckListViewController"
-            stylesheets="@styles/deck-list-view.css">
+            fx:controller="com.example.marvelsnaptracker.controller.normal.DecksViewController"
+            stylesheets="@../styles/decks-view.css">
 
   <ScrollPane styleClass="deck-view-container" fitToWidth="true">
     <VBox fx:id="deckContainer" alignment="CENTER" />

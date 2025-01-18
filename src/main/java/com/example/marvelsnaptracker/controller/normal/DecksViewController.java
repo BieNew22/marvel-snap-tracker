@@ -1,6 +1,7 @@
-package com.example.marvelsnaptracker.controller;
+package com.example.marvelsnaptracker.controller.normal;
 
 import com.example.marvelsnaptracker.MainApplication;
+import com.example.marvelsnaptracker.controller.DeckInfoViewController;
 import com.example.marvelsnaptracker.deck.Deck;
 import com.example.marvelsnaptracker.deck.DeckManager;
 import javafx.fxml.FXML;
@@ -10,7 +11,7 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.util.Iterator;
 
-public class DeckListViewController {
+public class DecksViewController {
 
     // 사용자 덱 정보들을 담을 컨테이너
     @FXML
@@ -28,11 +29,12 @@ public class DeckListViewController {
                 Deck deck = decks.next();
 
                 // deck-view 를 로드 함.
-                FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("deck-view.fxml"));
+                String deckInfoView = "util-view/deck-info-view.fxml";
+                FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource(deckInfoView));
                 VBox childNode = loader.load();
 
                 // 현재 deck-view에 deck 정보를 넘김
-                DeckViewController controller = loader.getController();
+                DeckInfoViewController controller = loader.getController();
                 controller.initDeckView(deck);
 
                 deckContainer.getChildren().add(childNode);
