@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.*;
+import java.net.URL;
 
 public class MainApplication extends Application {
 
@@ -18,6 +19,7 @@ public class MainApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        /* normal view 로드 부분 임시 주석
         // FXML 파일 로드
         String fileName = "root-view/normal-view.fxml";
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(fileName));
@@ -43,6 +45,21 @@ public class MainApplication extends Application {
         stage.setTitle("Marvel Snap");
         stage.setScene(scene);
         stage.setResizable(false);
+        stage.show();
+        */
+
+        String fileName = "root-view/game-view.fxml";
+
+
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(fileName));
+        Scene scene = new Scene(fxmlLoader.load(), 350, 60);
+
+        stage.setScene(scene);
+//        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setAlwaysOnTop(true);
+
+
+
         stage.show();
     }
 

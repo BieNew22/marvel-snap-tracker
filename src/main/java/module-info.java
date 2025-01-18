@@ -20,6 +20,7 @@ module com.example.marvelsnaptracker {
     exports com.example.marvelsnaptracker.card to com.fasterxml.jackson.databind;
     exports com.example.marvelsnaptracker.controller.normal;
     opens com.example.marvelsnaptracker.controller.normal to javafx.fxml;
+    opens com.example.marvelsnaptracker.controller.game to javafx.fxml;
     exports com.example.marvelsnaptracker.manager.normal;
     opens com.example.marvelsnaptracker.manager.normal to javafx.fxml;
 }
