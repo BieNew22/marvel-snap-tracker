@@ -1,23 +1,27 @@
 package com.example.marvelsnaptracker.controller.normal;
 
+import com.example.marvelsnaptracker.MainApplication;
+import com.example.marvelsnaptracker.controller.utils.TaskbarController;
 import com.example.marvelsnaptracker.manager.normal.TaskbarViewManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import lombok.Setter;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 public class NormalViewController {
 
     @FXML private VBox contentBox;
 
-    @FXML private Button minimizeButton;
-
-    @FXML private Button closeButton;
+    @FXML private HBox taskbarContainer;
 
     // 화면 전환용 관련 button 하단 hover 적용할 vbox
     @FXML private Button mainButton;
@@ -32,23 +36,18 @@ public class NormalViewController {
 
     private HashMap<String, TaskbarViewManager> managers;
 
-    @Setter
-    private Stage primaryStage;
-
     @FXML
     public void initialize() {
-        // taskbar 버튼에 이벤트 추가
-        // 창 최소화 버튼 이벤트 추가
-        minimizeButton.setOnAction(e -> {
-            if (primaryStage != null)
-                primaryStage.setIconified(true);
-        });
+        // taskbar 초기화
+        try {
+            String taskbarFile = "util-view/taskbar.fxml";
+            FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource(taskbarFile));
+            HBox content = loader.load();
 
-        // 창 닫기 버튼 이벤트 추가
-        closeButton.setOnAction(e -> {
-            if (primaryStage != null)
-                primaryStage.close();
-        });
+            taskbarContainer.getChildren().add(content);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         // 화면 전환 번튼에 대한 manager 추가
         managers = new HashMap<>();

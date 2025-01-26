@@ -21,45 +21,6 @@
     -fx-background-color: transparent;
 }
 
-/* taskbar 최소화, 닫기 버튼 관련 css */
-
-/* 두 버튼의 공동 부분 */
-.window-button {
-    -fx-background-color: transparent;
-    -fx-background-size: 30%;
-    -fx-background-repeat: no-repeat;
-    -fx-background-position: center;
-    -fx-pref-width: 30;
-    -fx-pref-height: 30;
-    -fx-background-radius: 0;
-}
-
-.window-button:hover {
-    -fx-cursor: hand;
-    -fx-background-radius: 10;
-
-    transition: -fx-background-radius 0.5s ease;
-}
-
-/* 각 버튼의 CSS */
-.close-button {
-    -fx-background-image: url("../images/close.png");
-}
-
-.close-button:hover {
-    -fx-background-color: red;
-    -fx-background-image: url("../images/close-reverse.png");
-}
-
-.minimize-button {
-    -fx-background-image: url("../images/minimize.png");
-}
-
-.minimize-button:hover {
-    -fx-background-color: white;
-    -fx-background-image: url("../images/minimize-reverse.png");
-}
-
 /* taskbar 화면 전환 관련 버튼 css */
 
 /* 화면 전환 버튼 구분선 */

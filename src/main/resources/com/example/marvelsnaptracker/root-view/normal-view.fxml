@@ -49,18 +49,7 @@
 
         <!-- 창 컨트롤하는 버튼 모은 -->
         <right>
-            <HBox BorderPane.alignment="CENTER" alignment="CENTER">
-                <Button fx:id="minimizeButton" styleClass="minimize-button, window-button">
-                    <HBox.margin>
-                        <Insets right="10" />
-                    </HBox.margin>
-                </Button>
-                <Button fx:id="closeButton" styleClass="close-button, window-button">
-                    <HBox.margin>
-                        <Insets right="10" />
-                    </HBox.margin>
-                </Button>
-            </HBox>
+            <HBox fx:id="taskbarContainer" alignment="CENTER" />
         </right>
 
     </BorderPane>
