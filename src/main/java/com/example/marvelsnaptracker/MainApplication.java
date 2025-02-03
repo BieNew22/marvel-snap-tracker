@@ -52,6 +52,7 @@ public class MainApplication extends Application {
         stage.setTitle("Marvel Snap");
         stage.setScene(scene);
         stage.setResizable(false);
+        stage.setAlwaysOnTop(true);
         stage.show();
     }
 
