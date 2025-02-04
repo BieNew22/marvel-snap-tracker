@@ -4,6 +4,7 @@
 }
 
 .main-label {
+    -fx-pref-width: 90;
     -fx-text-fill: white;
     -fx-font-family: 'sans-serif';
     -fx-font-weight: bold;
@@ -24,6 +25,7 @@
 
     -fx-padding: 0 0 3 7;
     -fx-font-family: 'sans-serif';
+    -fx-effect: dropshadow( gaussian, #ffcc00, 10, 0.5, 0, 0);
 
     -fx-border-color: white;
     -fx-border-width: 1;
@@ -32,11 +34,15 @@
     -fx-text-fill: white;
 }
 
+
+
 .expand-button:hover {
     -fx-cursor: hand;
 
     -fx-background-image: url("../images/expand-reverse.png");
     -fx-background-color: white;
+
+    -fx-effect: dropshadow( gaussian, #ffde00, 10, 0.7, 0, 0);
 
     -fx-text-fill: black;
 
