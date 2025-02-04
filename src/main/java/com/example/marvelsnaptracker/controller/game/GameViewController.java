@@ -2,9 +2,13 @@ package com.example.marvelsnaptracker.controller.game;
 
 import com.example.marvelsnaptracker.MainApplication;
 import com.example.marvelsnaptracker.manager.normal.TaskbarViewManager;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -12,6 +16,7 @@ import java.util.HashMap;
 public class GameViewController {
 
     @FXML private HBox taskbarContainer;
+    @FXML private Label mainLabel;
 
     @FXML
     public void initialize() {
@@ -25,5 +30,53 @@ public class GameViewController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        // 메인 라벨에 타이포 효과 추가하기.
+        Timeline timeline = new Timeline();
+        int initTime = 200;
+        initTime += addTypoEffect(timeline, "Welcome!!", initTime, 200);
+        initTime += addTypoEffect(timeline, "Good Day!!", initTime, 200);
+
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+
+        // 글자 반짝이는 효과 -> 미정.
+//        Timeline timeline2 = new Timeline(
+//                new KeyFrame(Duration.seconds(0.5), e -> mainLabel.setOpacity(0.3)),
+//                new KeyFrame(Duration.seconds(1.0), e -> mainLabel.setOpacity(1.0))
+//        );
+//        timeline2.setCycleCount(Timeline.INDEFINITE);
+//        timeline2.play();
+    }
+
+    /**
+     * 라벨에 타이포 효과 추가 함수.
+     *
+     * @param timeline  타이포를 진행할 timeline
+     * @param content   타이포할 문자열
+     * @param initTime  애니메이션 시작 시간
+     * @param timeGab   각 글자간 타이핑 시간 (밀리초)
+     * @return          애니메이션 종료 시간.
+     */
+    int addTypoEffect(Timeline timeline, String content, int initTime, int timeGab) {
+        for (int i = 0; i < content.length(); i++) {
+            final int index = i;
+            timeline.getKeyFrames().add(
+                    new KeyFrame(Duration.millis(initTime),
+                            e -> mainLabel.setText(content.substring(0, index + 1)))
+            );
+            initTime += timeGab;
+        }
+
+        for (int i = content.length() - 1; i >= 0; i--) {
+            final int index = i;
+            timeline.getKeyFrames().add(
+                    new KeyFrame(Duration.millis(initTime),
+                            e -> mainLabel.setText(content.substring(0, index)))
+            );
+            initTime += timeGab;
+        }
+
+        return initTime;
     }
 }

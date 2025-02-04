@@ -16,7 +16,7 @@
     <BorderPane>
         <center>
             <HBox alignment="CENTER">
-                <Label styleClass="main-label" text="Welcome!!">
+                <Label fx:id="mainLabel" styleClass="main-label" text=" Welcome!!">
                     <HBox.margin>
                         <Insets right="10" />
                     </HBox.margin>
