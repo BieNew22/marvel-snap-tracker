@@ -1,22 +1,24 @@
 package com.example.marvelsnaptracker.controller.game;
 
 import com.example.marvelsnaptracker.MainApplication;
-import com.example.marvelsnaptracker.manager.normal.TaskbarViewManager;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.util.Duration;
 
 import java.io.IOException;
-import java.util.HashMap;
 
 public class GameViewController {
 
     @FXML private HBox taskbarContainer;
     @FXML private Label mainLabel;
+    @FXML private Button expandButton;
 
     @FXML
     public void initialize() {
@@ -30,6 +32,13 @@ public class GameViewController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        // expand 버튼 이벤트 추가 : mainView 으로 화면 전환
+        expandButton.setOnAction(e -> {
+            Stage stage = MainApplication.getPrimaryStage();
+
+            stage.setScene(MainApplication.getMainView());
+        });
 
         // 메인 라벨에 타이포 효과 추가하기.
         Timeline timeline = new Timeline();

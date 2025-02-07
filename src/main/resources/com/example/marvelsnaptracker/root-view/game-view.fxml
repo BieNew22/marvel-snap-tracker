@@ -21,7 +21,7 @@
                         <Insets right="10" />
                     </HBox.margin>
                 </Label>
-                <Button styleClass="expand-button" text="expand" />
+                <Button fx:id="expandButton" styleClass="expand-button" text="expand"  />
             </HBox>
         </center>
 
